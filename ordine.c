@@ -138,6 +138,8 @@ void stampa_nome_piatti(FILE *menu, int *piatti)
         // Stampa il nome del piatto ignorando i caratteri prima di esso
         printf("| %s\n", temporaneo + spazi);
     }
+
+    rewind(menu);
 }
 
 
@@ -229,6 +231,8 @@ int leggi_righe_file(FILE *file)
 
     while(fgets(temp, 100, file) != NULL)
         righe++;
+
+    rewind(file);
 
     return righe;
 }
