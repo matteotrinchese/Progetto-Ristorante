@@ -57,7 +57,7 @@ void stampa_ordine(FILE *menu, ordine ord)
 {
     printf("\n");
     printf("+-------------------------------------+\n");
-    printf("| ID: %d\n", ord->ID);
+    printf("| ID: %03d\n", ord->ID);
     printf("+-------------------------------------+\n");
     printf("| Piatti:\n");
 

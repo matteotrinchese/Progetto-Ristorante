@@ -51,7 +51,7 @@ int main()
         switch(scelta)
         {
             case 1:
-                printf("\n\nOrdine %d\n\n", conto_ordini);
+                printf("\n\nOrdine %03d\n\n", conto_ordini);
                 ord = crea_ordine(menu, tempo_di_preparazione, conto_ordini);
                 if(ord == NULL)
                 {
