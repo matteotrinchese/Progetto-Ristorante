@@ -3,14 +3,15 @@
 #include <string.h>
 #include "ordine.h"
 
+// Definizione del numero massimo di piatti per un ordine
 #define MASSIMO_PIATTI 20
 
 
-// Definizione del tipo c_struct
+// Definizione del tipo c_ordine
 struct c_ordine
 {
     int ID;
-    int *piatti;
+    int *piatti;            // Array che contiene il valore associato ai piatti presenti nell'ordine
     char *descrizione;
     int t_preparazione;
 };
@@ -19,10 +20,18 @@ struct c_ordine
 // Funzioni
 
 
-ordine crea_ordine(int ID, FILE *menu, FILE *tempo)
+ordine crea_ordine(FILE *menu, FILE *tempo_di_preparazione, int ID)
 {
     ordine ord;
+    int *piatti;
 
+    piatti = leggi_piatti(menu);
+
+    // Se non ci sono piatti, restituisce NULL senza creare l'ordine
+    if(piatti[0] == 0)
+        return NULL;
+
+    // Allocazione dinamica per un nuovo ordine
     ord = malloc(sizeof(struct c_ordine));
     if(ord == NULL)
     {
@@ -31,13 +40,14 @@ ordine crea_ordine(int ID, FILE *menu, FILE *tempo)
     }
 
     ord->ID = ID;
-    ord->piatti = leggi_piatti(menu);
+    ord->piatti = piatti;
 
-    if(ord->piatti[0] == 0)
-        return NULL;
 
+    // Legge la descrizione dell'ordine
     ord->descrizione = leggi_descrizione();
-    ord->t_preparazione = tempo_di_preparazione(tempo, ord->piatti);
+
+    // Calcola il tempo di preparazione dell'ordine
+    ord->t_preparazione = calcola_tempo_di_preparazione(tempo_di_preparazione, ord->piatti);
 
     return ord;
 }
@@ -50,13 +60,18 @@ void stampa_ordine(FILE *menu, ordine ord)
     printf("| ID: %d\n", ord->ID);
     printf("+-------------------------------------+\n");
     printf("| Piatti:\n");
+
+    // Stampa i nomi dei piatti dell'ordine
     stampa_nome_piatti(menu, ord->piatti);
     printf("+-------------------------------------+\n");
+
+    // Stampa la descrizione dell'ordine se presente
     if(ord->descrizione != NULL)
     {
         printf("| Descrizione:\n| %s\n", ord->descrizione);
         printf("+-------------------------------------+\n");
     }
+
     printf("| Tempo stimato di preparazione: %d min.\n", ord->t_preparazione);
     printf("+-------------------------------------+\n");
 }
@@ -73,23 +88,25 @@ void dealloca_ordine(ordine ord)
 char *leggi_descrizione()
 {
     char *descrizione;
-    char temp[500];
+    char temporaneo[500];
 
     printf("Inserire una descrizione dell'ordine:\n");
-    fgets(temp, 500, stdin);
-    temp[strcspn(temp, "\n")] = '\0';
+    fgets(temporaneo, sizeof(temporaneo), stdin);
 
-    if(temp[0] == '\0')
+    // Rimuove il carattere '\n' dalla stringa
+    temporaneo[strcspn(temporaneo, "\n")] = '\0';
+
+    if(temporaneo[0] == '\0')
         return NULL;
 
-    descrizione = malloc(strlen(temp) + 1);
+    descrizione = malloc(strlen(temporaneo) + 1);
     if(descrizione == NULL)
     {
         printf("Allocazione dinamica non andata a buon fine.\n");
         exit(1);
     }
 
-    strcpy(descrizione, temp);
+    strcpy(descrizione, temporaneo);
 
     return descrizione;
 }
@@ -97,43 +114,62 @@ char *leggi_descrizione()
 
 void stampa_nome_piatti(FILE *menu, int *piatti)
 {
-    char temp[50];
+    char temporaneo[50];
     int num;
+    int spazi;
 
+    // Il ciclo itera fin quando non trova il valore 0 nell'array piatti
     for(int i = 0; piatti[i] != 0; i++)
     {
         rewind(menu);
+
+        // Il ciclo itera fino alla riga dove e' presente il piatto
         for(int j = 0; j < piatti[i]; j++)
         {
-            fgets(temp, 50, menu);
+            fgets(temporaneo, sizeof(temporaneo), menu);
         }
-        int spazi;
-        spazi = strcspn(temp, "\t") + 1;
-        temp[strcspn(temp, "\n")] = '\0';
-        printf("| %s\n", temp + spazi);
+
+        // Trova la posizione del primo '\t' e lo ignora
+        spazi = strcspn(temporaneo, "\t") + 1;
+
+        // Rimuove il carattere '\n' dalla stringa
+        temporaneo[strcspn(temporaneo, "\n")] = '\0';
+
+        // Stampa il nome del piatto ignorando i caratteri prima di esso
+        printf("| %s\n", temporaneo + spazi);
     }
 }
 
 
-int tempo_di_preparazione(FILE *tempo, int *piatti)
+int calcola_tempo_di_preparazione(FILE *tempo_di_preparazione, int *piatti)
 {
     int t = 0;
-    int somma = 0;
-    char temp[50];
+    int t_preparazione = 0;
+    char temporaneo[50];
 
+    // Il ciclo itera fin quando non trova il valore 0 nell'array piatti
     for(int i = 0; piatti[i] != 0; i++)
     {
-        rewind(tempo);
+        rewind(tempo_di_preparazione);
+
+        // Il ciclo itera fino alla riga precedente a quella dove e' presente
+        // il tempo di preparazione ricercato
         for(int j = 0; j < piatti[i] - 1; j++)
         {
-            fgets(temp, 50, tempo);
+            fgets(temporaneo, sizeof(temporaneo), tempo_di_preparazione);
         }
-        fscanf(tempo, "%d", &t);
-        fscanf(tempo, "%d", &t);
-        somma += t;
+
+        // Legge il numero del piatto da cui si vuole ottenere il tempo di preparazione
+        fscanf(tempo_di_preparazione, "%d", &t);
+
+        // Legge il tempo di preparazione del piatto voluto
+        fscanf(tempo_di_preparazione, "%d", &t);
+
+        // Somma il tempo di preparazione
+        t_preparazione += t;
     }
 
-    return somma;
+    return t_preparazione;
 }
 
 
@@ -145,6 +181,7 @@ int *leggi_piatti(FILE *menu)
 
     righe = leggi_righe_file(menu);
 
+    // Allocazione dinamica per l'array piatti
     piatti = calloc(MASSIMO_PIATTI, sizeof(int));
     if(piatti == NULL)
     {
@@ -155,14 +192,23 @@ int *leggi_piatti(FILE *menu)
     for(int i = 0; i < MASSIMO_PIATTI - 1; i++)
     {
         printf("Inserisci il piatto dell'ordine (0 per terminare): ");
+
+        // Controlla se il valore inserito dell'utente è valido
         if(scanf("%d", &num) != 1 || num > righe)
         {
+            // Pulisce il buffer
             while(getchar() != '\n');
+
             printf("Valore inserito non valido\n");
             i -= 1;
             continue;
         }
+
+        // Pulisce il buffer
         while(getchar() != '\n');
+
+        // In caso in cui il valore inserito dall'utente e' 0
+        // esce dal ciclo
         if(num == 0)
         {
             piatti[i] = num;
@@ -176,12 +222,12 @@ int *leggi_piatti(FILE *menu)
 }
 
 
-int leggi_righe_file(FILE *fp)
+int leggi_righe_file(FILE *file)
 {
     char temp[100];
     int righe = 0;
 
-    while(fgets(temp, 100, fp) != NULL)
+    while(fgets(temp, 100, file) != NULL)
         righe++;
 
     return righe;

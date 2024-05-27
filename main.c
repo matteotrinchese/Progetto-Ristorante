@@ -52,7 +52,7 @@ int main()
         {
             case 1:
                 printf("\n\nOrdine %d\n\n", conto_ordini);
-                ord = crea_ordine(conto_ordini, menu, tempo_di_preparazione);
+                ord = crea_ordine(menu, tempo_di_preparazione, conto_ordini);
                 if(ord == NULL)
                 {
                     printf("\nL'ordine non contiene piatti.\n\n");
