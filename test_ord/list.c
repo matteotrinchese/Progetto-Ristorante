@@ -47,7 +47,7 @@ void Stampa_lista(FILE *fp, lista list_ord)
     temp = list_ord;
     while(temp != NULL)
     {
-        stampa_ordine(fp, list_ord->ord);
+        stampa_ordine(fp, temp->ord);
         temp = temp->prossimo;
     }
 }
