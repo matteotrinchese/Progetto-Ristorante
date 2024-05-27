@@ -1,6 +1,6 @@
 ✓ Stampare il menù in modo più carino e coccoloso
 
-Sistemare la stampa degli ordini nelle varie fasi
+✓ Sistemare la stampa degli ordini nelle varie fasi
 
 ✓ Sistemare lo switch (a quanto pare non si pulisce bene il buffer)
 
@@ -8,17 +8,18 @@ Sistemare la stampa degli ordini nelle varie fasi
 
 ✓ Se hai la coda vuota e mandi in cucina, se dopo stampi crasha
 
-Stampare a schermo nel caso in cui le code sono vuote.
+✓ Stampare a schermo nel caso in cui le code sono vuote.
 
-Sistemare la funzione che prende i piatti dell'ordinazione (se inserisci una stringa da problemi)
-(se inserisci un numero più grande delle portate presenti nel file MENU.txt mette negli ordini più volte l'ultimo piatto disponibile)
-(Il tempo di preparazione si rompe con numeri non presenti nel PREPARAZIONE.txt)
-(il tempo di preparazione si rompe con i numeri a due cifre in poi)
-(Se inserisci 0 prende comunque l'ordinazione)
+Sistemare la funzione che prende i piatti dell'ordinazione
+✓ (se inserisci una stringa da problemi)
+✓ (se inserisci un numero più grande delle portate presenti nel file MENU.txt mette negli ordini più volte l'ultimo piatto disponibile)
+✓(Il tempo di preparazione si rompe con numeri non presenti nel PREPARAZIONE.txt)
+✓ (il tempo di preparazione si rompe con i numeri a due cifre in poi)
+✓ (Se inserisci 0 prende comunque l'ordinazione)
 
 Convincere Antoco a non fare la funzione per ordinare la coda perché ho paura che sia l'inferno sulla terra scriverla
 
-Rimuovere dal programma la stampa della riuscita della deallocazione delle code
+✓ Rimuovere dal programma la stampa della riuscita della deallocazione delle code
 
 Fare il makefile
 

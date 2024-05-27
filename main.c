@@ -34,17 +34,17 @@ int main()
 
     while(1)
     {
-        printf("------------------------------");
-        printf("\n1: Aggiungi ordine.\n");
-        printf("2: Visualizza ordini in attesa.\n");
-        printf("3: Invia ordine in cucina.\n");
-        printf("4: Visualizza ordini in cucina.\n");
-        printf("5: Marca ordine come consegnato.\n");
-        printf("6: Visualizza ordini consegnati.\n");
-        printf("7: Esci.\n");
-        printf("------------------------------");
+        printf("+-------------------------------------+\n");
+        printf("| 1: Aggiungi ordine.                 |\n");
+        printf("| 2: Visualizza ordini in attesa.     |\n");
+        printf("| 3: Invia ordine in cucina.          |\n");
+        printf("| 4: Visualizza ordini in cucina.     |\n");
+        printf("| 5: Marca ordine come consegnato.    |\n");
+        printf("| 6: Visualizza ordini consegnati.    |\n");
+        printf("| 7: Esci.                            |\n");
+        printf("+-------------------------------------+\n");
 
-        printf("\n\nSeleziona un operazione: ");
+        printf("\nSeleziona un operazione: ");
         scanf("%d", &scelta);
         while(getchar() != '\n');
 
@@ -52,7 +52,12 @@ int main()
         {
             case 1:
                 printf("\n\nOrdine %d\n\n", conto_ordini);
-                ord = crea_ordine(conto_ordini, tempo_di_preparazione);
+                ord = crea_ordine(conto_ordini, menu, tempo_di_preparazione);
+                if(ord == NULL)
+                {
+                    printf("\nL'ordine non contiene piatti.\n\n");
+                    break;
+                }
                 conto_ordini++;
                 if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     printf("\nL'ordine non e' stato inserito.\n");
@@ -64,9 +69,9 @@ int main()
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
-                printf("\nOrdini in attesa:");
+                printf("\n\nOrdini in attesa:");
                 stampa_queue(menu, ordini_in_attesa);
-                printf("\n");
+                printf("\n\n");
                 break;
             case 3:
                 if(queue_vuota(ordini_in_attesa))
@@ -78,7 +83,7 @@ int main()
                 if(!aggiungi_in_queue(ordini_in_elaborazione, ord))
                     printf("\nL'ordine non e' stato inserito.\n");
                 rimuovi_testa_queue(ordini_in_attesa);
-                printf("\nIl primo ordine in attesa e' stato inviato in cucina\n\n");
+                printf("\nIl primo ordine in attesa e' stato inviato in cucina.\n\n");
                 break;
             case 4:
                 if(queue_vuota(ordini_in_elaborazione))
@@ -86,7 +91,9 @@ int main()
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
+                printf("\n\nOrdini in cucina:");
                 stampa_queue(menu, ordini_in_elaborazione);
+                printf("\n\n");
                 break;
             case 5:
                 if(queue_vuota(ordini_in_elaborazione))
@@ -98,7 +105,7 @@ int main()
                 if(!aggiungi_in_queue(ordini_consegnati, ord))
                     printf("\nL'ordine non e' stato inserito.\n\n");
                 rimuovi_testa_queue(ordini_in_elaborazione);
-                printf("\nIl primo ordine in cucina e' stato marcato come consegnato\n\n");
+                printf("\nIl primo ordine in cucina e' stato marcato come consegnato.\n\n");
                 break;
             case 6:
                 if(queue_vuota(ordini_consegnati))
@@ -106,7 +113,9 @@ int main()
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
+                printf("\n\nOrdini consegnati:");
                 stampa_queue(menu, ordini_consegnati);
+                printf("\n\n");
                 break;
             case 7:
                 if(!dealloca_queue(ordini_in_attesa))

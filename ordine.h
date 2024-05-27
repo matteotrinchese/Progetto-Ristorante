@@ -9,7 +9,7 @@ typedef struct c_ordine *ordine;
 
 
 // Crea un nuovo item e alloca dinamicamente lo spazio necessario
-ordine crea_ordine(int, FILE *);
+ordine crea_ordine(int, FILE *, FILE *);
 
 
 // Stampa a schermo le informazioni dell'item
@@ -35,5 +35,9 @@ int tempo_di_preparazione(FILE *, int *);
 
 
 // Legge i piatti che vengono inseriti dall'utente e li inserisce in un array
-int *leggi_piatti();
+int *leggi_piatti(FILE *);
+
+
+// Funzione che legge le righe di un file
+int leggi_righe_file(FILE *);
 
