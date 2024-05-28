@@ -17,14 +17,6 @@ int main()
     ordine ord4 = crea_ordine(4, tempo_di_preparazione);
     ordine ord5 = crea_ordine(5, tempo_di_preparazione);
 
-    printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        stampa_ordine(menu, ord1);
-            stampa_ordine(menu, ord2);
-                stampa_ordine(menu, ord3);
-                    stampa_ordine(menu, ord4);
-                        stampa_ordine(menu, ord5);
-
-    printf("\n\n\n\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\n\n\n\n");
     list_ord = Inserici_elem_lista(list_ord, ord1);
     list_ord = Inserici_elem_lista(list_ord, ord2);
     list_ord = Inserici_elem_lista(list_ord, ord3);
@@ -35,5 +27,8 @@ int main()
 
     Stampa_lista(menu, list_ord);
 
+    ordina_elementi(list_ord);
+
+    Stampa_lista(menu, list_ord);
 
 }
