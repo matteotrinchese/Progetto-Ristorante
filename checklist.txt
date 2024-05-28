@@ -21,7 +21,7 @@ Convincere Antoco a non fare la funzione per ordinare la coda perché ho paura c
 
 ✓ Rimuovere dal programma la stampa della riuscita della deallocazione delle code
 
-Chidere a Leo se conviene restituire un int (0 o 1) alla funzione dealloca ordine
+✓ Chidere a Leo se conviene restituire un int (0 o 1) alla funzione dealloca ordine
 
 Fare il makefile
 
