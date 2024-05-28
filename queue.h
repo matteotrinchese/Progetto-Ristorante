@@ -7,6 +7,7 @@ typedef struct c_queue *queue;
 
 // Prototipi
 
+
 /*
  * Specifica sintattica:
  * - crea_queue() -> queue
@@ -22,6 +23,7 @@ typedef struct c_queue *queue;
  */
 queue crea_queue();
 
+
 /*
  * Specifica sintattica:
  * - queue_vuota(queue) -> int
@@ -36,6 +38,7 @@ queue crea_queue();
  *
  */
 int queue_vuota(queue);
+
 
 /*
  * Specifica sintattica:
@@ -53,6 +56,7 @@ int queue_vuota(queue);
  */
 int aggiungi_in_queue(queue, ordine);
 
+
 /*
  * Specifica sintattica:
  * - ottieni_testa_queue(queue) -> ordine
@@ -66,7 +70,6 @@ int aggiungi_in_queue(queue, ordine);
  *                    restituisce NULL se la queue non ha elementi e se la queueu è NULL.
  *
  */
-// Legge l'elemento in testa alla queue
 ordine ottieni_testa_queue(queue);
 
 
