@@ -37,7 +37,5 @@ int tempo_di_preparazione(FILE *, int *);
 // Legge i piatti che vengono inseriti dall'utente e li inserisce in un array
 int *leggi_piatti();
 
-// esegue la differenza fra i tempi di preparazione di due ordini
-
-int differenza_tempo(ordine, ordine);
-
+// restituisce il tempo di preparazione di un ordine
+int prendi_t_preparazione(ordine);

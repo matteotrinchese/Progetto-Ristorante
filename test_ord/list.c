@@ -20,25 +20,42 @@ lista Inserici_elem_lista(lista list_ord, ordine ord)
     return list_ord;
 }
 
-void ordina_elementi(lista list_ordine)
+void scambia_ordini(struct nodo *ord1, struct nodo*ord2)
 {
-    lista i;
-    lista j;
-    lista temp;
-    int diff1 = 0, diff2 = 0;
+    ordine temp = ord1->ord;
+    ord1->ord = ord2->ord;
+    ord2->ord = temp;
+}
 
-    for(i = list_ordine; i != NULL && i->prossimo != NULL; i = i->prossimo)
+lista ordina_elementi(lista list_ordine)
+{
+    if(list_ordine == NULL || list_ordine->prossimo == NULL)
     {
-        for(j = i->prossimo; j != NULL; j = j->prossimo)
-        {
-            if((diff1=differenza_tempo(i->ord, j->ord)) >10 || (diff1=differenza_tempo(j->ord, i->ord)) >10)
-            {
-                temp = i;
-                i = j;
-                j = temp;
-            }
-        }
+        return list_ordine;
     }
+
+    int scambiati;
+    lista ptr1, ptr2 = NULL;
+
+    do
+    {
+        scambiati = 0;
+        ptr1 = list_ordine;
+
+        while (ptr1->prossimo != ptr2)
+        {
+            if(prendi_t_preparazione(ptr1->ord) < prendi_t_preparazione(ptr1->prossimo->ord))
+            {
+                scambia_ordini(ptr1, ptr1->prossimo);
+                scambiati = 1;
+            }
+            ptr1 = ptr1->prossimo;
+        }
+        
+        ptr2 = ptr1;
+    } while (scambiati);
+    
+    return list_ordine;
 }
 
 void Stampa_lista(FILE *fp, lista list_ord)

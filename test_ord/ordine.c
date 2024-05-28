@@ -149,9 +149,8 @@ int *leggi_piatti()
     return piatti;
 }
 
-int differenza_tempo(ordine ord1, ordine ord2)
-{
-    int diff;
 
-    diff = ord1->t_preparazione - ord2->t_preparazione;
+int prendi_t_preparazione(ordine ord)
+{
+    return ord->t_preparazione;
 }
