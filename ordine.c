@@ -249,3 +249,9 @@ void dealloca_ordine(ordine ord)
     free(ord);
 }
 
+
+int ottieni_tempo_di_preparazione(ordine ord)
+{
+    // Restituisce il tempo di preparazione dell'ordine
+    return ord->t_preparazione;
+}

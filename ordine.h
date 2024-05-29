@@ -135,3 +135,5 @@ void stampa_nome_piatti(FILE *menu, int *piatti);
  */
 void dealloca_ordine(ordine ord);
 
+
+int ottieni_tempo_di_preparazione(ordine ord);
