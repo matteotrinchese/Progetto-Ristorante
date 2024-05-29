@@ -5,7 +5,7 @@
 
 
 // Definizione del numero massimo di ordini contenuti nella PQueue
-#define MASSIMO_ORDINI 20
+#define MASSIMO_ORDINI 21
 
 
 struct c_PQ
@@ -79,47 +79,91 @@ int rimuovi_testa_PQ(PQueue q)
 
 void scorri_PQ_verso_il_basso(PQueue q)
 {
+    // // Variabile temporanea per lo scambio degli ordini
+    // ordine temporaneo;
+    //
+    // // Indice dell'elemento corrente nella PQ
+    // int i = 1;
+    //
+    // // Variabile per determinare la posizione dell'ordine da confrontare
+    // int pos;
+    //
+    // while(1)
+    // {
+    //     // Controlla se l'ordine corrente ha entrambi i figli (destro e sinistro)
+    //     if((2 * i + 1) <= q->num_el)
+    //     {
+    //         // Confronta il tempo di preparazione dei due figli e determina quale ha il valore minore
+    //         if(ottieni_tempo_di_preparazione(q->ord[2 * i]) < ottieni_tempo_di_preparazione(q->ord[2 * i + 1]))
+    //             pos = i * 2;            // L'ordine figlio sinistro ha il tempo di preparazione minore
+    //         else
+    //             pos = i * 2 + 1;        // L'ordine figlio destro ha il tempo di preparazione minore
+    //     }
+    //
+    //
+    //     // Controlla se l'ordine corrente ha solo figlio sinistro
+    //     if(2 * i <= q->num_el)
+    //         pos = 2 * i;
+    //     else
+    //         break;      // Se l'ordine non ha figli termina il ciclo
+    //
+    //
+    //     // Confronta il tempo di preparazione dell'ordine corrente con quello del figlio determinato in pos
+    //     if(ottieni_tempo_di_preparazione(q->ord[pos]) < ottieni_tempo_di_preparazione(q->ord[i]))
+    //     {
+    //         // Se il figlio ha un tempo di preparazione minore, scambia i due ordini
+    //         temporaneo = q->ord[i];
+    //         q->ord[i] = q->ord[pos];
+    //         q->ord[pos] = temporaneo;
+    //         // Aggiorna l'indice corrente alla posizione del figlio
+    //         i = pos;
+    //     }
+    //     else
+    //         break;      // Se l'ordine corrente ha tempo di preparazione minore o uguale al figlio, esce dal ciclo
+    // }
+
     // Variabile temporanea per lo scambio degli ordini
     ordine temporaneo;
 
     // Indice dell'elemento corrente nella PQ
     int i = 1;
 
-    // Variabile per determinare la posizione dell'ordine da confrontare
-    int pos;
-
-    while(1)
+    while (i <= q->num_el)
     {
-        // Controlla se l'ordine corrente ha entrambi i figli (destro e sinistro)
-        if((2 * i + 1) <= q->num_el)
+        // Indici dei figli sinistro e destro
+        int sinistro = 2 * i;
+        int destro = 2 * i + 1;
+
+        // Teniamo traccia dell'indice del figlio con la priorità più alta (minore tempo di preparazione)
+        int maggiore_priorita = i;
+
+        // Confronta l'elemento corrente con il figlio sinistro
+        if (sinistro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[sinistro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
         {
-            // Confronta il tempo di preparazione dei due figli e determina quale ha il valore minore
-            if(ottieni_tempo_di_preparazione(q->ord[2 * i]) < ottieni_tempo_di_preparazione(q->ord[2 * i + 1]))
-                pos = i * 2;            // L'ordine figlio sinistro ha il tempo di preparazione minore
-            else
-                pos = i * 2 + 1;        // L'ordine figlio destro ha il tempo di preparazione minore
+            maggiore_priorita = sinistro;
         }
 
-
-        // Controlla se l'ordine corrente ha solo figlio sinistro
-        if(2 * i <= q->num_el)
-            pos = 2 * i;
-        else
-            break;      // Se l'ordine non ha figli termina il ciclo
-
-
-        // Confronta il tempo di preparazione dell'ordine corrente con quello del figlio determinato in pos
-        if(ottieni_tempo_di_preparazione(q->ord[pos]) < ottieni_tempo_di_preparazione(q->ord[i]))
+        // Confronta l'elemento corrente con il figlio destro
+        if (destro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[destro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
         {
-            // Se il figlio ha un tempo di preparazione minore, scambia i due ordini
+            maggiore_priorita = destro;
+        }
+
+        // Se l'elemento corrente ha la priorità minore (tempo di preparazione maggiore) di entrambi i figli, scambiamo
+        if (maggiore_priorita != i)
+        {
             temporaneo = q->ord[i];
-            q->ord[i] = q->ord[pos];
-            q->ord[pos] = temporaneo;
-            // Aggiorna l'indice corrente alla posizione del figlio
-            i = pos;
+            q->ord[i] = q->ord[maggiore_priorita];
+            q->ord[maggiore_priorita] = temporaneo;
+
+            // Aggiorna l'indice corrente alla posizione del figlio con maggiore priorità
+            i = maggiore_priorita;
         }
         else
-            break;      // Se l'ordine corrente ha tempo di preparazione minore o uguale al figlio, esce dal ciclo
+        {
+            // Se l'elemento corrente è nel posto giusto, termina il ciclo
+            break;
+        }
     }
 }
 
@@ -182,22 +226,26 @@ void scorri_PQ_verso_alto(PQueue q)
 
 void stampa_PQ(FILE *menu, PQueue q)
 {
-    // PQueue temporaneo;
-    //
-    // // Copia i valori presenti nella PQueue in una variabile temporanea
-    // temporaneo = q;
-    //
-    // // Itera finche' la PQueue non possiede piu' elementi
-    // while(temporaneo->num_el > 0)
-    // {
-    //     // Stampa l'ordine in testa alla PQueue
-    //     stampa_ordine(menu, ottieni_testa_PQ(temporaneo));
-    //
-    //     // Rimuove l'ordine in testa e risistema la PQueue
-    //     rimuovi_testa_PQ(temporaneo);
-    // }
+    if(q == NULL || q->num_el == 0)
+        return;
 
-    // Da riscrivere!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ordine temporaneo[MASSIMO_ORDINI];
+    int i = 0;
+    int num_el_originale = q->num_el;
+
+    while(q->num_el > 0)
+    {
+        ordine ord = ottieni_testa_PQ(q);
+
+        temporaneo[i++] = ord;
+        stampa_ordine(menu, ord);
+        rimuovi_testa_PQ(q);
+    }
+
+    for(int j = 0; j < num_el_originale; j++)
+    {
+        aggiungi_in_PQ(q, temporaneo[j]);
+    }
 }
 
 
