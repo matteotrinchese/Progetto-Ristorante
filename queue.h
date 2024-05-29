@@ -11,13 +11,13 @@ typedef struct c_queue *queue;
 /*
  * Specifica sintattica:
  * - crea_queue() -> queue
- * - tipi: void
+ * - tipi: queue
  *
  * Specifica semantica:
- * - Funzione: crea_queue(menu, tempo_di_preparazione, ID) -> queue
+ * - Funzione: crea_queue() -> queue
  * - Descrizione: Alloca lo spazio necessario per la queue.
  * - Pre-condizioni: //
- * - Post-condizioni: la funzione restituisce la nuova coda creata, in caso in cui non
+ * - Post-condizioni: la funzione restituisce la nuova queue creata, in caso in cui non
  *                    venga allocata allora restituirà NULL.
  *
  */
@@ -72,6 +72,7 @@ int aggiungi_in_queue(queue, ordine);
  */
 ordine ottieni_testa_queue(queue);
 
+
 /*
  * Specifica sintattica:
  * - rimuovi_testa_queue(queue) -> int
@@ -86,6 +87,7 @@ ordine ottieni_testa_queue(queue);
  *
  */
 int rimuovi_testa_queue(queue);
+
 
 /*
  * Specifica sintattica:
@@ -102,6 +104,7 @@ int rimuovi_testa_queue(queue);
  */
 void stampa_queue(FILE *, queue);
 
+
 /*
  * Specifica sintattica:
  * - dealloca_queue(queue) -> int
@@ -115,11 +118,9 @@ void stampa_queue(FILE *, queue);
  *                    1 se ha deallocato correttamente la memoria.
  *
  */
-// Dealloca lo spazio occupato dalla queue
 int dealloca_queue(queue);
 
 
-// Ordina la coda di ordini in base al tempo di preparazione e all'ID
 
 
 
