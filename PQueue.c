@@ -126,8 +126,12 @@ void scorri_PQ_verso_il_basso(PQueue q)
 
 int aggiungi_in_PQ(PQueue q, ordine ord)
 {
-    // Se la coda non e' stata allocata restituisce 0
+    // Se la PQueue non e' stata allocata restituisce 0
     if(q == NULL)
+        return 0;
+
+    // Se la PQueue e' piena restituisce 0
+    if(q->num_el == MASSIMO_ORDINI - 1)
         return 0;
 
     (q->num_el)++;
@@ -178,18 +182,38 @@ void scorri_PQ_verso_alto(PQueue q)
 
 void stampa_PQ(FILE *menu, PQueue q)
 {
-    PQueue temporaneo;
+    // PQueue temporaneo;
+    //
+    // // Copia i valori presenti nella PQueue in una variabile temporanea
+    // temporaneo = q;
+    //
+    // // Itera finche' la PQueue non possiede piu' elementi
+    // while(temporaneo->num_el > 0)
+    // {
+    //     // Stampa l'ordine in testa alla PQueue
+    //     stampa_ordine(menu, ottieni_testa_PQ(temporaneo));
+    //
+    //     // Rimuove l'ordine in testa e risistema la PQueue
+    //     rimuovi_testa_PQ(temporaneo);
+    // }
 
-    // Copia i valori presenti nella PQueue in una variabile temporanea
-    temporaneo = q;
+    // Da riscrivere!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
 
-    // Itera finche' la PQueue non possiede piu' elementi
-    while(temporaneo->num_el == 0)
+
+int dealloca_PQ(PQueue q)
+{
+    if(q == NULL)
+        return 0;
+
+    while(q->num_el > 0)
     {
-        // Stampa l'ordine in testa alla PQueue
-        stampa_ordine(menu, ottieni_testa_PQ(temporaneo));
-
-        // Rimuove l'ordine in testa e risistema la PQueue
-        rimuovi_testa_PQ(temporaneo);
+        ordine temporaneo = ottieni_testa_PQ(q);
+        dealloca_ordine(temporaneo);
+        rimuovi_testa_PQ(q);
     }
+
+    free(q);
+
+    return 1;
 }

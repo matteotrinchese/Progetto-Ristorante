@@ -26,3 +26,6 @@ void scorri_PQ_verso_alto(PQueue q);
 
 
 void stampa_PQ(FILE *menu, PQueue q);
+
+
+int dealloca_PQ(PQueue q);

@@ -2,18 +2,24 @@
 #include <string.h>
 #include <stdlib.h>
 #include "queue.h"
+#include "PQueue.h"
 
 
 int main()
 {
     int conto_ordini = 1;
-    int scelta;
-    queue ordini_in_attesa, ordini_in_elaborazione, ordini_consegnati;
+
+    queue ordini_in_attesa, ordini_consegnati;
+    PQueue ordini_in_elaborazione;
+
     FILE *menu, *tempo_di_preparazione;
+
     ordine ord;
 
+    int scelta;
+
     ordini_in_attesa = crea_queue();
-    ordini_in_elaborazione = crea_queue();
+    ordini_in_elaborazione = crea_PQ();
     ordini_consegnati = crea_queue();
 
     menu = fopen("MENU.txt", "r");
@@ -53,15 +59,19 @@ int main()
             case 1:
                 printf("\n\nOrdine %03d\n\n", conto_ordini);
                 ord = crea_ordine(menu, tempo_di_preparazione, conto_ordini);
+
                 if(ord == NULL)
                 {
                     printf("\nL'ordine non contiene piatti.\n\n");
                     break;
                 }
+
                 conto_ordini++;
+
                 if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     printf("\nL'ordine non e' stato inserito.\n");
                 printf("\n");
+
                 break;
             case 2:
                 if(queue_vuota(ordini_in_attesa))
@@ -69,9 +79,11 @@ int main()
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
+
                 printf("\n\nOrdini in attesa:");
                 stampa_queue(menu, ordini_in_attesa);
                 printf("\n\n");
+
                 break;
             case 3:
                 if(queue_vuota(ordini_in_attesa))
@@ -79,32 +91,46 @@ int main()
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
+
                 ord = ottieni_testa_queue(ordini_in_attesa);
-                if(!aggiungi_in_queue(ordini_in_elaborazione, ord))
+
+                // if(!aggiungi_in_queue(ordini_in_elaborazione, ord))
+                //     printf("\nL'ordine non e' stato inserito.\n");
+                // rimuovi_testa_queue(ordini_in_attesa);
+
+                if(!aggiungi_in_PQ(ordini_in_elaborazione, ord))
                     printf("\nL'ordine non e' stato inserito.\n");
                 rimuovi_testa_queue(ordini_in_attesa);
+
                 printf("\nIl primo ordine in attesa e' stato inviato in cucina.\n\n");
                 break;
             case 4:
-                if(queue_vuota(ordini_in_elaborazione))
+                if(PQ_vuota(ordini_in_elaborazione))
                 {
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
+
                 printf("\n\nOrdini in cucina:");
-                stampa_queue(menu, ordini_in_elaborazione);
+                stampa_PQ(menu, ordini_in_elaborazione);
+                // La stampa_PQ va sistemata (dopo la stampa elimina tutti gli ordini in cucina)
                 printf("\n\n");
+
                 break;
             case 5:
-                if(queue_vuota(ordini_in_elaborazione))
+                if(PQ_vuota(ordini_in_elaborazione))
                 {
                     printf("\nLa coda è vuota.\n\n");
                     break;
                 }
-                ord = ottieni_testa_queue(ordini_in_elaborazione);
+
+                ord = ottieni_testa_PQ(ordini_in_elaborazione);
+
                 if(!aggiungi_in_queue(ordini_consegnati, ord))
                     printf("\nL'ordine non e' stato inserito.\n\n");
-                rimuovi_testa_queue(ordini_in_elaborazione);
+
+                rimuovi_testa_PQ(ordini_in_elaborazione);
+
                 printf("\nIl primo ordine in cucina e' stato marcato come consegnato.\n\n");
                 break;
             case 6:
@@ -120,7 +146,7 @@ int main()
             case 7:
                 if(!dealloca_queue(ordini_in_attesa))
                     printf("Deallocazione non andata a buon fine.\n");
-                if(!dealloca_queue(ordini_in_elaborazione))
+                if(!dealloca_PQ(ordini_in_elaborazione))
                     printf("Deallocazione non andata a buon fine.\n");
                 if(!dealloca_queue(ordini_consegnati))
                     printf("Deallocazione non andata a buon fine.\n\n");
