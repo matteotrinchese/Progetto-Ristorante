@@ -63,16 +63,53 @@ ordine ottieni_testa_PQ(PQueue);
  *                    0 se la queue a priorità è NULL o ha zero elementi.
  *
  */
-int rimuovi_testa_PQ(PQueue q);
+int rimuovi_testa_PQ(PQueue);
 
+/*
+ * Specifica sintattica:
+ * - scorri_PQ_verso_il_basso(PQueue) -> void
+ * - tipi: PQueue
+ *
+ * Specifica semantica:
+ * - Funzione: scorri_PQ_verso_il_basso(q) -> void
+ * - Descrizione: Scorre dall'alto verso il basso la queue a priorità.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata.
+ * - Post-condizioni: la funzione scorre dall'alto verso il basso la queue a priorità andando poi a scambiare gli indirizzi di memoria 
+ *                    all'interno della queue stessa.
+ *
+ */
+void scorri_PQ_verso_il_basso(PQueue);
 
-void scorri_PQ_verso_il_basso(PQueue q);
+/*
+ * Specifica sintattica:
+ * - aggiungi_in_PQ(PQueue, ordine) -> int
+ * - tipi: PQueue, ordine ed int
+ *
+ * Specifica semantica:
+ * - Funzione: aggiungi_in_PQ(q, ord) -> int
+ * - Descrizione: Aggiunge un elemento in coda alla queue a priorità.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata, l'ordine deve essere allocato correttamente 
+ *                   e deve contenere degli elementi.
+ * - Post-condizioni: la funzione restituisce un intero, 1 se ha inserimento correttamente l'ordine nella queue apriorità
+ *                    0 invece se la queue a priorità è NULL oppure è piena.
+ *
+ */
+int aggiungi_in_PQ(PQueue,  ordine);
 
-
-int aggiungi_in_PQ(PQueue q, ordine ord);
-
-
-void scorri_PQ_verso_alto(PQueue q);
+/*
+ * Specifica sintattica:
+ * - scorri_PQ_verso_alto(PQueue) -> void
+ * - tipi: PQueue
+ *
+ * Specifica semantica:
+ * - Funzione: scorri_PQ_verso_alto(q) -> void
+ * - Descrizione: Scorre dal basso verso l'alto la queue a priorità.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata.
+ * - Post-condizioni: la funzione scorre dal basso verso l'alto la queue a priorità andando poi a scambiare gli indirizzi di memoria 
+ *                    all'interno della queue stessa.
+ *
+ */
+void scorri_PQ_verso_alto(PQueue);
 
 
 /*
@@ -88,7 +125,19 @@ void scorri_PQ_verso_alto(PQueue q);
  * - Post-condizioni: La funzione stampa a video tutta la queue a priorità contenente gli ordini in attesa.
  *
  */
-void stampa_PQ(FILE *menu, PQueue q);
+void stampa_PQ(FILE *, PQueue);
 
-
-int dealloca_PQ(PQueue q);
+/*
+ * Specifica sintattica:
+ * - dealloca_PQ(queue) -> int
+ * - tipi: PQueue ed int
+ *
+ * Specifica semantica:
+ * - Funzione: dealloca_PQ(q) -> int
+ * - Descrizione: Dealloca lo spazio occupato dalla queue a priorità.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata.
+ * - Post-condizioni: La funzione restituisce un intero, 0 se la queue a priorità è NULL
+ *                    invece 1 se ha deallocato correttamente la memoria.
+ *
+ */
+int dealloca_PQ(PQueue);
