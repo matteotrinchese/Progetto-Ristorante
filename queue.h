@@ -11,13 +11,13 @@ typedef struct c_queue *queue;
 /*
  * Specifica sintattica:
  * - crea_queue() -> queue
- * - tipi: void
+ * - tipi: queue
  *
  * Specifica semantica:
- * - Funzione: crea_queue(menu, tempo_di_preparazione, ID) -> queue
+ * - Funzione: crea_queue() -> queue
  * - Descrizione: Alloca lo spazio necessario per la queue.
  * - Pre-condizioni: //
- * - Post-condizioni: la funzione restituisce la nuova coda creata, in caso in cui non
+ * - Post-condizioni: la funzione restituisce la nuova queue creata, in caso in cui non
  *                    venga allocata allora restituirà NULL.
  *
  */
