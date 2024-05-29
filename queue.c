@@ -133,7 +133,7 @@ void stampa_queue(FILE *menu, queue q)
 int dealloca_queue(queue q)
 {
     if(q == NULL)
-        return 1;
+        return 0;
 
 
     while(q->testa != NULL)

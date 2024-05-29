@@ -72,15 +72,49 @@ int aggiungi_in_queue(queue, ordine);
  */
 ordine ottieni_testa_queue(queue);
 
-
-// Rimuove l'elemento in testa alla queue
+/*
+ * Specifica sintattica:
+ * - rimuovi_testa_queue(queue) -> int
+ * - tipi: queue ed int
+ *
+ * Specifica semantica:
+ * - Funzione: rimuovi_testa_queue(q) -> int
+ * - Descrizione: Rimuove l'elemento in testa alla queue.
+ * - Pre-condizioni: la queue deve essere correttamente creata ed allocata.
+ * - Post-condizioni: la funzione restituisce un intero, 1 se la rimozione avviene con successo
+ *                    0 se la queue è NULL o ha zero elementi.
+ *
+ */
 int rimuovi_testa_queue(queue);
 
-
-// Stampa a schermo le informazioni contenute nella queue
+/*
+ * Specifica sintattica:
+ * - stampa_queue(FILE *, queue) -> void
+ * - tipi: puntatore ad un file e queue
+ *
+ * Specifica semantica:
+ * - Funzione: stampa_queue(menu, q) -> void
+ * - Descrizione: Stampa a schermo le informazioni contenute nella queue.
+ * - Pre-condizioni: la queue deve essere correttamente creata ed allocata 
+ *                   ed il puntatore al file deve essere aperto correttamente.
+ * - Post-condizioni: La funzione stampa a video tutta la queue contenente gli ordini in attesa.
+ *
+ */
 void stampa_queue(FILE *, queue);
 
-
+/*
+ * Specifica sintattica:
+ * - dealloca_queue(queue) -> int
+ * - tipi: queue ed int
+ *
+ * Specifica semantica:
+ * - Funzione: dealloca_queue(q) -> int
+ * - Descrizione: Dealloca lo spazio occupato dalla queue.
+ * - Pre-condizioni: la queue deve essere correttamente creata ed allocata.
+ * - Post-condizioni: La funzione restituisce un intero, 0 se la queue è NULL
+ *                    1 se ha deallocato correttamente la memoria.
+ *
+ */
 // Dealloca lo spazio occupato dalla queue
 int dealloca_queue(queue);
 
