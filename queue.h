@@ -121,7 +121,3 @@ void stampa_queue(FILE *, queue);
 int dealloca_queue(queue);
 
 
-
-
-
-

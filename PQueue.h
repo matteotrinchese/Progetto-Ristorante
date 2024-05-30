@@ -95,10 +95,10 @@ void scorri_PQ_verso_il_basso(PQueue);
  * Specifica semantica:
  * - Funzione: aggiungi_in_PQ(q, ord) -> int
  * - Descrizione: Aggiunge un elemento in coda alla queue a priorità.
- * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata, l'ordine deve essere allocato correttamente 
- *                   e deve contenere degli elementi.
- * - Post-condizioni: la funzione restituisce un intero, 1 se ha inserimento correttamente l'ordine nella queue apriorità
- *                    0 invece se la queue a priorità è NULL oppure è piena.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata,
+ *                   l'ordine deve essere allocato correttamente e deve contenere degli elementi.
+ * - Post-condizioni: la funzione restituisce un intero, 1 se ha inserimento correttamente
+ *                    l'ordine nella PQueue 0 invece se la queue a priorità è NULL oppure è piena.
  *
  */
 int aggiungi_in_PQ(PQueue,  ordine);
@@ -150,3 +150,6 @@ void stampa_PQ(FILE *, PQueue);
  *
  */
 int dealloca_PQ(PQueue);
+
+
+int PQ_piena(PQueue);

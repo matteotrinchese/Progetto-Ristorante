@@ -42,38 +42,6 @@ int *leggi_piatti(FILE *menu);
 
 /*
  * Specifica sintattica:
- * - leggi_righe_file(FILE *) -> int
- * - tipi: puntatore a file e int
- *
- * Specifica semantica:
- * - Funzione: leggi_righe_file(file) -> righe
- * - Descrizione: Legge il numero di righe nel file in input alla funzione.
- * - Pre-condizioni: il file deve esser stato correttamente aperto.
- * - Post-condizioni: la funzione restituisce il numero di righe presente nel file.
- *
- */
-int leggi_righe_file(FILE *file);
-
-
-/*
- * Specifica sintattica:
- * - leggi_descrizione(void) -> char *
- * - tipi: char *
- *
- * Specifica semantica:
- * - Funzione: leggi_descrizione() -> descrizione
- * - Descrizione: Legge e alloca dinamicamente la descrizione inserita per l'ordine.
- * - Pre-condizioni: nessuna.
- * - Post-condizioni: la funzione resitutisce la stringa che contiene la descrizione,
- *                    in caso in cui l'utente non inserisce una stringa (inserisce '\n'), la funzione
- *                    restituisce NULL.
- *
- */
-char *leggi_descrizione();
-
-
-/*
- * Specifica sintattica:
  * - calcola_tempo_di_preparazione(FILE *, int *) -> int
  * - tipi: puntatore a file e puntatore ad int
  *

@@ -236,3 +236,12 @@ int dealloca_PQ(PQueue q)
 
     return 1;
 }
+
+
+int PQ_piena(PQueue q)
+{
+    if(q == NULL)
+        return -1;
+
+    return q->num_el == MASSIMO_ORDINI - 1;
+}

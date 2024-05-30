@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ordine.h"
+#include "utili.h"
 
 // Definizione del numero massimo di piatti per un ordine
-#define MASSIMO_PIATTI 20
+#define MASSIMO_PIATTI 21
 
 
 // Definizione del tipo c_ordine
@@ -77,7 +78,7 @@ int *leggi_piatti(FILE *menu)
         printf("Inserisci il piatto dell'ordine (0 per terminare): ");
 
         // Controlla se il valore inserito dell'utente è valido
-        if(scanf("%d", &num) != 1 || num > righe)
+        if(scanf("%d", &num) != 1 || num > righe || num < 0)
         {
             // Pulisce il buffer
             while(getchar() != '\n');
@@ -105,52 +106,17 @@ int *leggi_piatti(FILE *menu)
 }
 
 
-int leggi_righe_file(FILE *file)
-{
-    char temp[100];
-    int righe = 0;
-
-    // Conta le righe finche' non arriva alla fine del file
-    while(fgets(temp, 100, file) != NULL)
-        righe++;
-
-    rewind(file);
-
-    return righe;
-}
-
-
-char *leggi_descrizione()
-{
-    char *descrizione;
-    char temporaneo[500];
-
-    printf("Inserire una descrizione dell'ordine:\n");
-    fgets(temporaneo, sizeof(temporaneo), stdin);
-
-    // Rimuove il carattere '\n' dalla stringa
-    temporaneo[strcspn(temporaneo, "\n")] = '\0';
-
-    if(temporaneo[0] == '\0')
-        return NULL;
-
-    descrizione = malloc(strlen(temporaneo) + 1);
-    if(descrizione == NULL)
-    {
-        printf("Allocazione dinamica non andata a buon fine.\n");
-        exit(1);
-    }
-
-    strcpy(descrizione, temporaneo);
-
-    return descrizione;
-}
-
-
 int calcola_tempo_di_preparazione(FILE *tempo_di_preparazione, int *piatti)
 {
+    // Variabile che mantiene il tempo di preparazione letto dal file
     int t = 0;
+
+    // Contatore che mantiene il numero di piatti inseriti nell'ordine
+    int num = 0;
+
+    // Variabile che contiene il tempo di preparazione effettivo dell'ordine
     int t_preparazione = 0;
+
     char temporaneo[50];
 
     // Il ciclo itera fin quando non trova il valore 0 nell'array piatti
@@ -171,9 +137,17 @@ int calcola_tempo_di_preparazione(FILE *tempo_di_preparazione, int *piatti)
         // Legge il tempo di preparazione del piatto voluto
         fscanf(tempo_di_preparazione, "%d", &t);
 
-        // Somma il tempo di preparazione
-        t_preparazione += t;
+        // Inserisce in t_preparazione il tempo di preparazione maggiore
+        // dei piatti inseriti nell'ordine e somma 2 minuti in più per ciascun piatto
+        if(t > t_preparazione)
+            t_preparazione = t;
+
+        // Incrementa il numero di piatti letti nel ciclo
+        num++;
     }
+
+    // Aggiunge un minuto in più per ogni piatto presente nell'ordine
+    t_preparazione += num;
 
     return t_preparazione;
 }
