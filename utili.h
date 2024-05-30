@@ -48,3 +48,5 @@ char *leggi_descrizione();
  */
 void attesa();
 
+
+
