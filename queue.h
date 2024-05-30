@@ -48,8 +48,8 @@ int queue_vuota(queue);
  * Specifica semantica:
  * - Funzione: aggiungi_in_queue(q, ord) -> int
  * - Descrizione: Aggiunge un elemento in coda alla queue.
- * - Pre-condizioni: la queue deve essere correttamente creata ed allocata, l'ordine deve essere allocato correttamente 
- *                   e deve contenere degli elementi.
+ * - Pre-condizioni: la queue deve essere correttamente creata ed allocata, l'ordine deve essere
+ *                   allocato correttamente e deve contenere degli elementi.
  * - Post-condizioni: la funzione restituisce un intero, 1 se ha inserimento correttamente l'ordine nella queue
  *                    0 invece se la queue è NULL.
  *

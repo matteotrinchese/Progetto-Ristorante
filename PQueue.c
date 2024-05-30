@@ -79,53 +79,10 @@ int rimuovi_testa_PQ(PQueue q)
 
 void scorri_PQ_verso_il_basso(PQueue q)
 {
-    // // Variabile temporanea per lo scambio degli ordini
-    // ordine temporaneo;
-    //
-    // // Indice dell'elemento corrente nella PQ
-    // int i = 1;
-    //
-    // // Variabile per determinare la posizione dell'ordine da confrontare
-    // int pos;
-    //
-    // while(1)
-    // {
-    //     // Controlla se l'ordine corrente ha entrambi i figli (destro e sinistro)
-    //     if((2 * i + 1) <= q->num_el)
-    //     {
-    //         // Confronta il tempo di preparazione dei due figli e determina quale ha il valore minore
-    //         if(ottieni_tempo_di_preparazione(q->ord[2 * i]) < ottieni_tempo_di_preparazione(q->ord[2 * i + 1]))
-    //             pos = i * 2;            // L'ordine figlio sinistro ha il tempo di preparazione minore
-    //         else
-    //             pos = i * 2 + 1;        // L'ordine figlio destro ha il tempo di preparazione minore
-    //     }
-    //
-    //
-    //     // Controlla se l'ordine corrente ha solo figlio sinistro
-    //     if(2 * i <= q->num_el)
-    //         pos = 2 * i;
-    //     else
-    //         break;      // Se l'ordine non ha figli termina il ciclo
-    //
-    //
-    //     // Confronta il tempo di preparazione dell'ordine corrente con quello del figlio determinato in pos
-    //     if(ottieni_tempo_di_preparazione(q->ord[pos]) < ottieni_tempo_di_preparazione(q->ord[i]))
-    //     {
-    //         // Se il figlio ha un tempo di preparazione minore, scambia i due ordini
-    //         temporaneo = q->ord[i];
-    //         q->ord[i] = q->ord[pos];
-    //         q->ord[pos] = temporaneo;
-    //         // Aggiorna l'indice corrente alla posizione del figlio
-    //         i = pos;
-    //     }
-    //     else
-    //         break;      // Se l'ordine corrente ha tempo di preparazione minore o uguale al figlio, esce dal ciclo
-    // }
-
     // Variabile temporanea per lo scambio degli ordini
     ordine temporaneo;
 
-    // Indice dell'elemento corrente nella PQ
+    // Indice dell'elemento corrente nella PQueue
     int i = 1;
 
     while (i <= q->num_el)
@@ -134,20 +91,16 @@ void scorri_PQ_verso_il_basso(PQueue q)
         int sinistro = 2 * i;
         int destro = 2 * i + 1;
 
-        // Teniamo traccia dell'indice del figlio con la priorità più alta (minore tempo di preparazione)
+        // Tiene traccia dell'indice del figlio con la priorità più alta (minore tempo di preparazione)
         int maggiore_priorita = i;
 
         // Confronta l'elemento corrente con il figlio sinistro
         if (sinistro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[sinistro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
-        {
             maggiore_priorita = sinistro;
-        }
 
         // Confronta l'elemento corrente con il figlio destro
         if (destro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[destro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
-        {
             maggiore_priorita = destro;
-        }
 
         // Se l'elemento corrente ha la priorità minore (tempo di preparazione maggiore) di entrambi i figli, scambiamo
         if (maggiore_priorita != i)
@@ -226,24 +179,38 @@ void scorri_PQ_verso_alto(PQueue q)
 
 void stampa_PQ(FILE *menu, PQueue q)
 {
-    if(q == NULL || q->num_el == 0)
+    // Se la PQueue non e' stata allocata interrompe la funzione
+    if(q == NULL)
         return;
 
+    // Se la PQueue non ha elementi interrompe la funzione
+    if(q->num_el == 0)
+        return;
+
+    // Dichiara un vettore temporaneo di ordini
     ordine temporaneo[MASSIMO_ORDINI];
+
+    // Dichiara un indice per il vettore temporaneo
     int i = 0;
+
+    // Salva il valore dei numeri di elementi nella PQueue
     int num_el_originale = q->num_el;
 
+    // Itera finche' nella PQueue sono presenti elementi
     while(q->num_el > 0)
     {
+        // Salva in ord l'ordine in testa alla Pqueue e la inserisce nel vettore temporaneo
         ordine ord = ottieni_testa_PQ(q);
-
         temporaneo[i++] = ord;
+
+        // Stampa ord e lo rimuove dalla PQueue
         stampa_ordine(menu, ord);
         rimuovi_testa_PQ(q);
     }
 
     for(int j = 0; j < num_el_originale; j++)
     {
+        // Reinserisce i vari ordini nella PQueue
         aggiungi_in_PQ(q, temporaneo[j]);
     }
 }
@@ -251,16 +218,20 @@ void stampa_PQ(FILE *menu, PQueue q)
 
 int dealloca_PQ(PQueue q)
 {
+    // In caso in cui la PQueue non e' mai stata allocata restituisce 0
     if(q == NULL)
         return 0;
 
+    // Itera finche' non sono più presenti elementi nella PQueue
     while(q->num_el > 0)
     {
+        // Dealloca l'ordine in testa e lo rimuove dalla PQueue
         ordine temporaneo = ottieni_testa_PQ(q);
         dealloca_ordine(temporaneo);
         rimuovi_testa_PQ(q);
     }
 
+    // Dealloca lo spazio occupato da q
     free(q);
 
     return 1;

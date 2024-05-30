@@ -1,9 +1,11 @@
 #include "ordine.h"
 
-// Definizione del tipo PQueue
+
 typedef struct c_PQ *PQueue;
 
+
 // Prototipi
+
 
 /*
  * Specifica sintattica:
@@ -20,6 +22,7 @@ typedef struct c_PQ *PQueue;
  */
 PQueue crea_PQ();
 
+
 /*
  * Specifica sintattica:
  * - PQueue_vuota(PQueue) -> int
@@ -34,6 +37,7 @@ PQueue crea_PQ();
  *
  */
 int PQ_vuota(PQueue);
+
 
 /*
  * Specifica sintattica:
@@ -50,6 +54,7 @@ int PQ_vuota(PQueue);
  */
 ordine ottieni_testa_PQ(PQueue);
 
+
 /*
  * Specifica sintattica:
  * - rimuovi_testa_PQ(PQueue) -> int
@@ -64,6 +69,7 @@ ordine ottieni_testa_PQ(PQueue);
  *
  */
 int rimuovi_testa_PQ(PQueue);
+
 
 /*
  * Specifica sintattica:
@@ -80,6 +86,7 @@ int rimuovi_testa_PQ(PQueue);
  */
 void scorri_PQ_verso_il_basso(PQueue);
 
+
 /*
  * Specifica sintattica:
  * - aggiungi_in_PQ(PQueue, ordine) -> int
@@ -95,6 +102,7 @@ void scorri_PQ_verso_il_basso(PQueue);
  *
  */
 int aggiungi_in_PQ(PQueue,  ordine);
+
 
 /*
  * Specifica sintattica:
@@ -126,6 +134,7 @@ void scorri_PQ_verso_alto(PQueue);
  *
  */
 void stampa_PQ(FILE *, PQueue);
+
 
 /*
  * Specifica sintattica:
