@@ -135,5 +135,15 @@ void stampa_nome_piatti(FILE *menu, int *piatti);
  */
 void dealloca_ordine(ordine ord);
 
-
+/*
+ * Specifica sintattica:
+ * - ottieni_tempo_di_preparazione(ordine) -> int
+ * - tipi: ordine
+ *
+ * Specifica semantica:
+ * - Funzione: ottieni_tempo_di_preparazione(ord) -> int
+ * - Descrizione: Restituisce il tempo di preparaizione.
+ * - Pre-condizioni: ord deve puntare ad un ordine valido.
+ * - Post-condizioni: la funzione restituisce il tempo di preparazione dell'ordine passato.
+ */
 int ottieni_tempo_di_preparazione(ordine ord);
