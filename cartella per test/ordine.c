@@ -31,11 +31,6 @@ ordine crea_ordine(FILE *menu, FILE *tempo_di_preparazione, int ID, int *piatti,
         free(piatti);
         return NULL;
     }
-    if(piatti[0] == 0)
-                {
-                    free(piatti);
-                    return NULL;
-                }
     // Allocazione dinamica per un nuovo ordine
     ord = malloc(sizeof(struct c_ordine));
     if(ord == NULL)
