@@ -17,7 +17,7 @@ int main()
     PQueue ordini_in_elaborazione;
 
     // Dichiarazione dei puntatori a file utili per la gestione degli ordini
-    FILE *menu, *tempo_di_preparazione, *test_suite;
+    FILE *menu, *tempo_di_preparazione, *test_suite, *risultato;
 
     ordine ord;
     char *descrizione;
@@ -48,6 +48,13 @@ int main()
 
     test_suite = fopen("Test_Suite.txt", "r");
     if(test_suite == NULL)
+    {
+        printf("Apertura file fallita.\n");
+        exit(1);
+    }
+
+    risultato = fopen("risultato.txt", "w");
+    if(risultato == NULL)
     {
         printf("Apertura file fallita.\n");
         exit(1);
