@@ -15,6 +15,9 @@ int main()
     // Contatore utile per contare le righe all'interno del file test_suite
     int conta_righe = 0;
 
+    // stringa temporanea che prenderà l righe del file test_suite
+    char temp_righe[50];
+
     // Dichiarazione delle code utili per la gestione degli ordini
     queue ordini_in_attesa, ordini_consegnati;
     PQueue ordini_in_elaborazione;
@@ -63,6 +66,13 @@ int main()
         exit(1);
     }
 
+    // ciclo per contare le righe all'interno del file test_suite
+    while(fgets(temp_righe, 50, test_suite))
+    {
+        conta_righe++;
+    }
+
+    rewind(test_suite);
     
     printf("\nGestore Ordinazioni\n\n");
 
