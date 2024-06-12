@@ -12,6 +12,9 @@ int main()
     // Contatore utile per gli ID dei vari ordini
     int conto_ordini = 1;
 
+    // Contatore utile per contare le righe all'interno del file test_suite
+    int conta_righe = 0;
+
     // Dichiarazione delle code utili per la gestione degli ordini
     queue ordini_in_attesa, ordini_consegnati;
     PQueue ordini_in_elaborazione;
