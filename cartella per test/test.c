@@ -18,12 +18,18 @@ int main()
     // stringa temporanea che prenderà l righe del file test_suite
     char temp_righe[50];
 
+    char input_test[50];
+
+    char output[50], oracle[50];
+
     // Dichiarazione delle code utili per la gestione degli ordini
     queue ordini_in_attesa, ordini_consegnati;
     PQueue ordini_in_elaborazione;
 
     // Dichiarazione dei puntatori a file utili per la gestione degli ordini
-    FILE *menu, *tempo_di_preparazione, *test_suite, *risultato;
+    FILE *menu, *tempo_di_preparazione, *risultato;
+
+    FILE *test_suite, *fp_input_test, *fp_output_test, *fp_oracle_test;
 
     ordine ord;
     char *descrizione;
@@ -73,6 +79,47 @@ int main()
     }
 
     rewind(test_suite);
+
+
+
+    for(int i = 0; i < conta_righe; i++)
+    {
+        ordini_in_attesa = crea_queue();  // creazione di una nuova coda in attesa
+        ordini_in_elaborazione = crea_PQ();  // creazione di una nuova coda in elaborazione
+        ordini_consegnati = crea_queue();  // creazione di una nuova coda in consegna
+
+        fgets(input_test, 50, test_suite);
+        input_test[strcspn(input_test, "\n")] = '\0';
+
+        sprintf(output, "TestC_Output%d", i+1);
+        sprintf(oracle, "TestC_Oracle%d", i+1);
+
+        if(!(fp_input_test = fopen(input_test, "r")))
+        {
+            printf("Apertura file fallita.\n");
+            exit(1);
+        }
+
+        if(!(fp_output_test = fopen(output, "w+")))
+        {
+            printf("Apertura file fallita.\n");
+            exit(1);
+        }
+
+        if(!(fp_oracle_test = fopen(oracle, "r")))
+        {
+            printf("Apertura file fallita.\n");
+            exit(1);
+        }
+    }
+
+
+
+
+
+
+
+
     
     printf("\nGestore Ordinazioni\n\n");
 
