@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "ordine.h"
+#include "queue.h"
+#include "PQueue.h"
 #include "utili.h"
 
 
@@ -54,4 +57,10 @@ void attesa()
     while(getchar() != '\n');
 
     printf("\n");
+}
+
+
+void leggi_file_input(FILE *fp_input, queue ordini)
+{
+    int *ordini;
 }

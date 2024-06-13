@@ -49,4 +49,4 @@ char *leggi_descrizione();
 void attesa();
 
 
-
+void leggi_file_input(FILE *, queue);
