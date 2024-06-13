@@ -111,6 +111,8 @@ int main()
             printf("Apertura file fallita.\n");
             exit(1);
         }
+
+        
     }
 
 
