@@ -103,6 +103,7 @@ void stampa_nome_piatti(FILE *menu, int *piatti);
  */
 void dealloca_ordine(ordine ord);
 
+
 /*
  * Specifica sintattica:
  * - ottieni_tempo_di_preparazione(ordine) -> int
@@ -117,13 +118,63 @@ void dealloca_ordine(ordine ord);
 int ottieni_tempo_di_preparazione(ordine ord);
 
 
+/*
+ * Specifica sintattica:
+ * - leggi_ordine_da_file(FILE *, FILE *, FILE *, int) -> ordine
+ * - tipi: puntatore a file e interi
+ *
+ * Specifica semantica:
+ * - Funzione: leggi_ordine_da_file(menu, tempo_di_preparazione, input, ID) -> ordine
+ * - Descrizione: Legge un ordine da un file di input e lo crea.
+ * - Pre-condizioni: I file devono essere stati correttamente aperti e il valore ID deve essere un intero.
+ * - Post-condizioni: La funzione restituisce il nuovo ordine creato leggendo le informazioni dal file
+ *                    di input, in caso in cui non vengono inseriti piatti la funzione restituisce NULL.
+ */
 ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *input, int ID);
 
 
+/*
+ * Specifica sintattica:
+ * - leggi_piatti_da_file(FILE *, FILE *) -> int *
+ * - tipi: puntatore a file
+ *
+ * Specifica semantica:
+ * - Funzione: leggi_piatti_da_file(menu, input) -> piatti
+ * - Descrizione: Legge i numeri dei piatti da un file di input e li inserisce nel vettore piatti.
+ * - Pre-condizioni: I file devono essere stati correttamente aperti.
+ * - Post-condizioni: La funzione restituisce il vettore piatti che contiene i numeri letti dal file
+ *                    di input, in caso in cui l'utente non inserisce un valore valido esso non viene
+ *                    inserito nel vettore piatti.
+ */
 int *leggi_piatti_da_file(FILE *menu, FILE *input);
 
 
+/*
+ * Specifica sintattica:
+ * - stampa_ordine_file(FILE *, FILE *, ordine) -> void
+ * - tipi: puntatore a file e ordine
+ *
+ * Specifica semantica:
+ * - Funzione: stampa_ordine_file(menu, output, ord) -> void
+ * - Descrizione: Stampa su un file le informazioni dell'ordine.
+ * - Pre-condizioni: I file devono essere stati correttamente aperti e ord deve puntare
+ *                   a un ordine valido.
+ * - Post-condizioni: La funzione non restituisce valori ma stampa su un file le informazioni
+ *                    dell'ordine.
+ */
 void stampa_ordine_file(FILE *menu, FILE *output, ordine ord);
 
 
+/*
+ * Specifica sintattica:
+ * - stampa_nome_piatti_file(FILE *, FILE *, int *) -> void
+ * - tipi: puntatore a file e puntatore ad int
+ *
+ * Specifica semantica:
+ * - Funzione: stampa_nome_piatti_file(menu, output, piatti) -> void
+ * - Descrizione: Stampa su un file il nome del piatto associato al numero inserito nel vettore piatti.
+ * - Pre-condizioni: I file devono essere stati correttamente aperti.
+ * - Post-condizioni: La funzione non restituisce valori ma stampa su un file il nome del piatto
+ *                    associato al valore inserito dall'utente nel vettore piatti.
+ */
 void stampa_nome_piatti_file(FILE *menu, FILE *output, int *piatti);

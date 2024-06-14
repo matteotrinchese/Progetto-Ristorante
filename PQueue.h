@@ -152,7 +152,31 @@ void stampa_PQ(FILE *, PQueue);
 int dealloca_PQ(PQueue);
 
 
+/*
+ * Specifica sintattica:
+ * - PQ_piena(PQueue) -> int
+ * - tipi: PQueue ed int
+ *
+ * Specifica semantica:
+ * - Funzione: PQ_piena(q) -> int
+ * - Descrizione: Controlla se la queue a priorità è piena.
+ * - Pre-condizioni: la PQueue deve essere correttamente creata ed allocata.
+ * - Post-condizioni: la funzione restituisce un intero, -1 se la queue a priorità è NULL,
+ *                    1 se la queue a priorità ha raggiunto la sua capacità massima e 0 se ha ancora spazio per altri elementi.
+ */
 int PQ_piena(PQueue);
 
 
+/*
+ * Specifica sintattica:
+ * - stampa_PQ_file(FILE *, FILE *, PQueue) -> void
+ * - tipi: puntatori a file e PQueue
+ *
+ * Specifica semantica:
+ * - Funzione: stampa_PQ_file(menu, output, q) -> void
+ * - Descrizione: Stampa a schermo e in un file le informazioni contenute nella queue a priorità.
+ * - Pre-condizioni: la queue a priorità deve essere correttamente creata ed allocata
+ *                   ed i puntatori ai file devono essere aperti correttamente.
+ * - Post-condizioni: La funzione stampa a video e scrive nel file output tutta la queue a priorità contenente gli ordini in attesa.
+ */
 void stampa_PQ_file(FILE *menu, FILE *output, PQueue q);

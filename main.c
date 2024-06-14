@@ -88,17 +88,19 @@ int main()
                     break;
                 }
 
-                // Incremanta la variabile che tiene conto degli ID degli ordini
-                conto_ordini++;
-
                 // Stampa un messaggio di errore in caso in cui l'aggiunta
                 // dell'ordine in coda di attesa non e' andato a buon fine
                 if(!aggiungi_in_queue(ordini_in_attesa, ord))
                 {
                     printf("\nL'ordine non e' stato inserito correttamente.\n");
                     attesa();
+                    break;
                 }
                 printf("\n");
+
+
+                // Incremanta la variabile che tiene conto degli ID degli ordini
+                conto_ordini++;
 
                 attesa();
                 break;
@@ -147,6 +149,7 @@ int main()
                 {
                     printf("\nL'ordine non e' stato inserito.\n");
                     attesa();
+                    break;
                 }
 
                 // Rimuove l'ordine dalla lista di attesa
@@ -192,6 +195,7 @@ int main()
                 {
                     printf("\nL'ordine non e' stato inserito.\n\n");
                     attesa();
+                    break;
                 }
 
                 // Rimuove l'ordine in testa alla coda degli ordini in elaborazione

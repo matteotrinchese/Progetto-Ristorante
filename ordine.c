@@ -214,12 +214,14 @@ void dealloca_ordine(ordine ord)
     if(ord == NULL)
         return;
 
+    // Libera la memoria allocata per l'array piatti
     free(ord->piatti);
 
-    // Se nell'ordine e' presente una descrizione, la dealloca
+    // Se nell'ordine è presente una descrizione, la dealloca
     if(ord->descrizione != NULL)
         free(ord->descrizione);
 
+    // Libera la memoria allocata per l'ordine stesso
     free(ord);
 }
 
@@ -269,8 +271,10 @@ int *leggi_piatti_da_file(FILE *menu, FILE *input)
     int num = 0;
     int righe;
 
+    // Legge il numero di righe del file di menu
     righe = leggi_righe_file(menu);
 
+    // Allocazione dinamica per l'array piatti
     piatti = calloc(MASSIMO_PIATTI, sizeof(int));
     if(piatti == NULL)
     {
@@ -278,18 +282,19 @@ int *leggi_piatti_da_file(FILE *menu, FILE *input)
         exit(1);
     }
 
-
-
+    // Legge i piatti dal file di input
     for(int i = 0; i < MASSIMO_PIATTI - 1; i++)
     {
         fgets(temporaneo, 50, input);
         num = atoi(temporaneo);
 
+        // Se il numero letto non è valido, esce dal ciclo
         if(num > righe || num < 0)
         {
             break;
         }
 
+        // In caso in cui il valore inserito dall'utente è 0 esce dal ciclo
         if(num == 0)
         {
             piatti[i] = num;
@@ -305,15 +310,19 @@ int *leggi_piatti_da_file(FILE *menu, FILE *input)
 
 void stampa_ordine_file(FILE *menu, FILE *output, ordine ord)
 {
+    // Stampa l'ordine su un file di output
     fprintf(output, "\n");
     fprintf(output, "ID: %03d\n", ord->ID);
     fprintf(output, "Piatti:\n");
 
+    // Stampa i nomi dei piatti dell'ordine su un file di output
     stampa_nome_piatti_file(menu, output, ord->piatti);
 
+    // Stampa la descrizione dell'ordine se presente
     if(ord->descrizione != NULL)
         fprintf(output, "Descrizione:\n%s\n", ord->descrizione);
 
+    // Stampa il tempo stimato di preparazione dell'ordine
     fprintf(output, "Tempo stimato di preparazione: %d min.\n", ord->t_preparazione);
 }
 
@@ -324,17 +333,22 @@ void stampa_nome_piatti_file(FILE *menu, FILE *output, int *piatti)
     int num;
     int spazi;
 
+    // Stampa i nomi dei piatti dell'ordine su un file di output
     for(int i = 0; piatti[i] != 0; i++)
     {
         rewind(menu);
 
+        // Il ciclo itera fino alla riga dove è presente il piatto
         for(int j = 0; j < piatti[i]; j++)
             fgets(temporaneo, 50, menu);
 
+        // Trova la posizione del primo '\t' e lo ignora
         spazi = strcspn(temporaneo, "\t") + 1;
 
+        // Rimuove il carattere '\n' dalla stringa
         temporaneo[strcspn(temporaneo, "\n")] = '\0';
 
+        // Stampa il nome del piatto ignorando i caratteri prima di esso
         fprintf(output, "%s\n", temporaneo + spazi);
     }
 

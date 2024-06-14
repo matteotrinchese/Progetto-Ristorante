@@ -121,4 +121,16 @@ void stampa_queue(FILE *, queue);
 int dealloca_queue(queue);
 
 
+/*
+ * Specifica sintattica:
+ * - stampa_queue_file(FILE *, FILE *, queue) -> void
+ * - tipi: puntatore a FILE, puntatore a FILE e queue
+ *
+ * Specifica semantica:
+ * - Funzione: stampa_queue_file(menu, output, q) -> void
+ * - Descrizione: Stampa le informazioni contenute nella queue su file.
+ * - Pre-condizioni: La queue deve essere correttamente creata ed allocata,
+ *                   il puntatore al file di input e output devono essere aperti correttamente.
+ * - Post-condizioni: Stampa su file tutte le informazioni degli ordini presenti nella queue.
+ */
 void stampa_queue_file(FILE *menu, FILE *output, queue q);

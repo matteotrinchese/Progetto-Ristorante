@@ -49,5 +49,18 @@ char *leggi_descrizione();
 void attesa();
 
 
+/*
+ * Specifica sintattica:
+ * - leggi_descrizione_da_file(FILE *) -> char *
+ * - tipi: puntatore a file e puntatore a char
+ *
+ * Specifica semantica:
+ * - Funzione: leggi_descrizione_da_file(input) -> descrizione
+ * - Descrizione: Legge dinamicamente la descrizione da un file di input.
+ * - Pre-condizioni: il file input deve essere stato correttamente aperto in modalità lettura.
+ * - Post-condizioni: la funzione restituisce una stringa allocata dinamicamente che contiene
+ *                    la descrizione letta dal file. Se il file è vuoto o non contiene dati validi,
+ *                    la funzione restituisce NULL.
+ */
 char *leggi_descrizione_da_file(FILE *input);
 

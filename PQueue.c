@@ -243,6 +243,7 @@ int PQ_piena(PQueue q)
     if(q == NULL)
         return -1;
 
+    // Verifica se la PQueue ha raggiunto la capacità massima
     return q->num_el == MASSIMO_ORDINI - 1;
 }
 
@@ -261,6 +262,7 @@ void stampa_PQ_file(FILE *menu, FILE *output, PQueue q)
 
     int num_el_originale = q->num_el;
 
+    // Salva temporaneamente gli ordini dalla PQueue e stampa ogni ordine nel file
     while(q->num_el > 0)
     {
         ordine ord = ottieni_testa_PQ(q);
@@ -270,6 +272,7 @@ void stampa_PQ_file(FILE *menu, FILE *output, PQueue q)
         rimuovi_testa_PQ(q);
     }
 
+    // Reinserisce gli ordini nella PQueue
     for(int j = 0; j < num_el_originale; j++)
     {
         aggiungi_in_PQ(q, temporaneo[j]);

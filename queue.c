@@ -172,12 +172,15 @@ int dealloca_queue(queue q)
 
 void stampa_queue_file(FILE *menu, FILE *output, queue q)
 {
-    struct nodo *temporaneo;
-    temporaneo = q->testa;
+    // Puntatore per iterare attraverso la coda
+    struct nodo *temporaneo = q->testa;
 
-    while(temporaneo != NULL)
+    // Itera finché non si raggiunge la fine della coda
+    while (temporaneo != NULL)
     {
+        // Stampa l'ordine corrente nel file di output
         stampa_ordine_file(menu, output, temporaneo->ord);
+        // Passa al nodo successivo nella coda
         temporaneo = temporaneo->prossimo;
     }
 }
