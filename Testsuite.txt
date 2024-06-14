@@ -1,0 +1,12 @@
+TestC_Input1.txt
+TestC_Operazione1.txt
+TestC_Input2.txt
+TestC_Operazione2.txt
+TestC_Input3.txt
+TestC_Operazione3.txt
+TestC_Input4.txt
+TestC_Operazione4.txt
+TestC_Input5.txt
+TestC_Operazione5.txt
+TestC_Input6.txt
+TestC_Operazione6.txt
