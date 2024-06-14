@@ -1,0 +1,25 @@
+Ordini in attesa:
+
+ID: 001
+Piatti:
+Carpaccio di manzo
+Spaghetti alla carbonara
+Risotto ai funghi porcini
+Descrizione:
+se e' possibile avere una carbonara con uovo più cotto
+Tempo stimato di preparazione: 33 min.
+
+ID: 002
+Piatti:
+Bistecca alla fiorentina
+Spaghetti alla carbonara
+Carpaccio di manzo
+Descrizione:
+la bistecca la preferirei più cruda
+Tempo stimato di preparazione: 28 min.
+
+Ordine in cucina:
+Nessuno.
+
+Ordini consegnati:
+Nessuno.

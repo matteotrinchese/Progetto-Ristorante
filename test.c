@@ -107,12 +107,12 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-        // fp_oracle = fopen(oracle, "r");
-        // if(fp_oracle == NULL)
-        // {
-        //     printf("Apertura file fallita. (oracle)\n");
-        //     return 1;
-        // }
+        fp_oracle = fopen(oracle, "r");
+        if(fp_oracle == NULL)
+        {
+            printf("Apertura file fallita. (oracle)\n");
+            return 1;
+        }
 
 
         fscanf(fp_operazione, "%d\n", &scelta);
@@ -280,10 +280,10 @@ int main(int argc, char *argv[])
 
         rewind(fp_output);
 
-        // if(controllo_file(fp_output, fp_oracle))
-        //     fprintf(fp_risultato, "Successo.\n");
-        // else
-        //     fprintf(fp_risultato, "Fallimento.\n");
+        if(controllo_file(fp_output, fp_oracle))
+            fprintf(fp_risultato, "Successo.\n");
+        else
+            fprintf(fp_risultato, "Fallimento.\n");
 
         printf("%d\n", i);
 
@@ -294,6 +294,7 @@ int main(int argc, char *argv[])
         fclose(fp_input);
         fclose(fp_output);
         fclose(fp_operazione);
+        fclose(fp_oracle);
 
         printf("%d\n", i);
     }
