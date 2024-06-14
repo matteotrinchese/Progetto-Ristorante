@@ -1,0 +1,2 @@
+testc_input1.txt
+testc_operazione1.txt
