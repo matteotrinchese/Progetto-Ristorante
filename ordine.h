@@ -115,3 +115,18 @@ void dealloca_ordine(ordine ord);
  * - Post-condizioni: la funzione restituisce il tempo di preparazione dell'ordine passato.
  */
 int ottieni_tempo_di_preparazione(ordine ord);
+
+
+ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *input, int ID);
+
+
+int *leggi_piatti_da_file(FILE *menu, FILE *input);
+
+
+char *leggi_descrizione_da_file(FILE *input);
+
+
+void stampa_ordine_file(FILE *menu, FILE *output, ordine ord);
+
+
+void stampa_nome_piatti_file(FILE *menu, FILE *output, int *piatti);

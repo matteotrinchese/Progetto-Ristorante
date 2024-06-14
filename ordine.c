@@ -229,3 +229,140 @@ int ottieni_tempo_di_preparazione(ordine ord)
     // Restituisce il tempo di preparazione dell'ordine
     return ord->t_preparazione;
 }
+
+ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *input, int ID)
+{
+    ordine ord;
+    int *piatti;
+
+    piatti = leggi_piatti_da_file(menu, input);
+    if(piatti[0] == 0)
+    {
+        free(piatti);
+        return NULL;
+    }
+
+    ord = malloc(sizeof(struct c_ordine));
+    if(ord == NULL)
+    {
+        printf("Allocazione dinamica non andata a buon fine.\n");
+        exit(1);
+    }
+
+    ord->ID = ID;
+    ord->piatti = piatti;
+
+    ord->descrizione = leggi_descrizione_da_file(input);
+
+    ord->t_preparazione = calcola_tempo_di_preparazione(tempo_di_preparazione, ord->piatti);
+
+    return ord;
+
+}
+
+int *leggi_piatti_da_file(FILE *menu, FILE *input)
+{
+    int *piatti;
+    char temporaneo[50];
+    int num = 0;
+    int righe;
+
+    righe = leggi_righe_file(menu);
+
+    piatti = calloc(MASSIMO_PIATTI, sizeof(int));
+    if(piatti == NULL)
+    {
+        printf("Allocazione dinamica non andata a buon fine.\n");
+        exit(1);
+    }
+
+
+
+    for(int i = 0; i < MASSIMO_PIATTI - 1; i++)
+    {
+        fgets(temporaneo, 50, input);
+        num = atoi(temporaneo);
+
+        if(num > righe || num < 0)
+        {
+            break;
+        }
+
+        if(num == 0)
+        {
+            piatti[i] = num;
+            break;
+        }
+        else
+            piatti[i] = num;
+    }
+
+    return piatti;
+}
+
+char *leggi_descrizione_da_file(FILE *input)
+{
+    char *descrizione;
+    char temporaneo[500];
+
+    if(fgets(temporaneo, 500, input) == NULL)
+        return NULL;
+
+    // Rimuove il carattere '\n' dalla stringa
+    temporaneo[strcspn(temporaneo, "\n")] = '\0';
+
+    if(temporaneo[0] == '\0')
+        return NULL;
+
+    descrizione = malloc(strlen(temporaneo) + 1);
+    if(descrizione == NULL)
+    {
+        printf("Allocazione dinamica non andata a buon fine.\n");
+        exit(1);
+    }
+
+    strcpy(descrizione, temporaneo);
+
+    fgets(temporaneo, 500, input);
+
+    return descrizione;
+}
+
+
+void stampa_ordine_file(FILE *menu, FILE *output, ordine ord)
+{
+    fprintf(output, "\n");
+    fprintf(output, "ID: %03d\n", ord->ID);
+    fprintf(output, "Piatti:\n");
+
+    stampa_nome_piatti_file(menu, output, ord->piatti);
+
+    if(ord->descrizione != NULL)
+        fprintf(output, "Descrizione:\n%s\n", ord->descrizione);
+
+    fprintf(output, "Tempo stimato di preparazione: %d min.\n", ord->t_preparazione);
+}
+
+
+void stampa_nome_piatti_file(FILE *menu, FILE *output, int *piatti)
+{
+    char temporaneo[50];
+    int num;
+    int spazi;
+
+    for(int i = 0; piatti[i] != 0; i++)
+    {
+        rewind(menu);
+
+        for(int j = 0; j < piatti[i]; j++)
+            fgets(temporaneo, 50, menu);
+
+        spazi = strcspn(temporaneo, "\t") + 1;
+
+        temporaneo[strcspn(temporaneo, "\n")] = '\0';
+
+        fprintf(output, "%s\n", temporaneo + spazi);
+    }
+
+    rewind(menu);
+}

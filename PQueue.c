@@ -245,3 +245,33 @@ int PQ_piena(PQueue q)
 
     return q->num_el == MASSIMO_ORDINI - 1;
 }
+
+
+void stampa_PQ_file(FILE *menu, FILE *output, PQueue q)
+{
+    if(q == NULL)
+        return;
+
+    if(q->num_el == 0)
+        return;
+
+    ordine temporaneo[MASSIMO_ORDINI];
+
+    int i = 0;
+
+    int num_el_originale = q->num_el;
+
+    while(q->num_el > 0)
+    {
+        ordine ord = ottieni_testa_PQ(q);
+        temporaneo[i++] = ord;
+
+        stampa_ordine_file(menu, output, ord);
+        rimuovi_testa_PQ(q);
+    }
+
+    for(int j = 0; j < num_el_originale; j++)
+    {
+        aggiungi_in_PQ(q, temporaneo[j]);
+    }
+}

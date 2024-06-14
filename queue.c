@@ -168,3 +168,16 @@ int dealloca_queue(queue q)
 
     return 1;
 }
+
+
+void stampa_queue_file(FILE *menu, FILE *output, queue q)
+{
+    struct nodo *temporaneo;
+    temporaneo = q->testa;
+
+    while(temporaneo != NULL)
+    {
+        stampa_ordine_file(menu, output, temporaneo->ord);
+        temporaneo = temporaneo->prossimo;
+    }
+}

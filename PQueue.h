@@ -153,3 +153,6 @@ int dealloca_PQ(PQueue);
 
 
 int PQ_piena(PQueue);
+
+
+void stampa_PQ_file(FILE *menu, FILE *output, PQueue q);
