@@ -60,23 +60,3 @@ void attesa()
 }
 
 
-<<<<<<< HEAD
-=======
-void leggi_file_input(FILE *fp_input, queue ordini)
-{
-    int *ordini;
-    char *tmp_descrizione;
-    int *tmp_piatti;
-
-    // controlla che il file non sia vuoto
-    fgetc(fp_input);
-
-    while(!feof(fp_input))
-    {
-        while(fgetc(fp_input) != '\n')
-        {}
-
-        
-    }
-}
->>>>>>> efd9d681d289432bf335559eb7676165f992adbf
