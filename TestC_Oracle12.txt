@@ -1,0 +1,31 @@
+Ordini in attesa:
+Nessuno.
+
+Ordine in cucina:
+Nessuno.
+
+Ordini consegnati:
+
+ID: 002
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+ifafhubw4e
+Tempo stimato di preparazione: 11 min.
+
+ID: 003
+Piatti:
+Insalata Caprese
+Carpaccio di manzo
+Descrizione:
+rfefregeer
+Tempo stimato di preparazione: 17 min.
+
+ID: 001
+Piatti:
+Lasagna alla bolognese
+Bistecca alla fiorentina
+Tiramisu'
+Descrizione:
+proroa
+Tempo stimato di preparazione: 43 min.

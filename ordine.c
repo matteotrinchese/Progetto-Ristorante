@@ -291,7 +291,8 @@ int *leggi_piatti_da_file(FILE *menu, FILE *input)
         // Se il numero letto non è valido, esce dal ciclo
         if(num > righe || num < 0)
         {
-            break;
+            i -= 1;
+            continue;
         }
 
         // In caso in cui il valore inserito dall'utente è 0 esce dal ciclo

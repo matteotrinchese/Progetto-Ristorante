@@ -1,0 +1,153 @@
+Ordini in attesa:
+
+ID: 021
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+Ordine in cucina:
+
+ID: 001
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 020
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 019
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 018
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 017
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 016
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 015
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 014
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 013
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 012
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 011
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 010
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 009
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 008
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 007
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 006
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 005
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 004
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 003
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+ID: 002
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+wdvudwvuevu
+Tempo stimato di preparazione: 11 min.
+
+Ordini consegnati:
+Nessuno.

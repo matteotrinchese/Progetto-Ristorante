@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     for(int i = 0; i < righe_test_suite / 2; i++)
     {
-        op = 1;
+        op = 0;
         printf("%d\n", i);
         ordini_in_attesa = crea_queue();
         ordini_in_elaborazione = crea_PQ();
@@ -123,56 +123,62 @@ int main(int argc, char *argv[])
                 op = 0;
                 break;
             case 1:
+                conto_ordini = 1;
+                op = 0;
                 while(!feof(fp_input))
                 {
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
+                    op = 1;
                     printf("OP: %d\n", op);
                     conto_ordini++;
                 }
                 break;
             case 2:
+                conto_ordini = 1;
+                int i = 0;
                 while(!feof(fp_input))
                 {
+
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     {
-                        op = 0;
                         break;
                     }
 
+                    printf("I e' %d\n", i++);
+                    op = 1;
                     conto_ordini++;
                 }
 
+                op = 0;
                 fscanf(fp_operazione, "%d\n", &num);
                 printf("%d", num);
                 for(int j = 0; j < num; j++)
                 {
                     if(queue_vuota(ordini_in_attesa))
                     {
-                        op = 0;
                         break;
                     }
 
                     if(PQ_piena(ordini_in_elaborazione))
                     {
-                        op = 0;
                         break;
                     }
 
@@ -180,44 +186,47 @@ int main(int argc, char *argv[])
 
                     if(!aggiungi_in_PQ(ordini_in_elaborazione, ord))
                     {
-                        op = 0;
                         break;
                     }
 
                     rimuovi_testa_queue(ordini_in_attesa);
+                    printf("J e' %d\n", j);
+                    op = 1;
                 }
                 break;
             case 3:
+                conto_ordini = 1;
                 while(!feof(fp_input))
                 {
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
+                    op = 1;
                     conto_ordini++;
                 }
-
+                op = 0;
                 fscanf(fp_operazione, "%d", &num);
                 for(int j = 0; j < num; j++)
                 {
                     if(queue_vuota(ordini_in_attesa))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     if(PQ_piena(ordini_in_elaborazione))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
@@ -225,19 +234,20 @@ int main(int argc, char *argv[])
 
                     if(!aggiungi_in_PQ(ordini_in_elaborazione, ord))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     rimuovi_testa_queue(ordini_in_attesa);
+                    op = 1;
                 }
-
+                op = 0;
                 fscanf(fp_operazione, "%d", &num);
                 for(int j = 0; j < num; j++)
                 {
                     if(PQ_vuota(ordini_in_elaborazione))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
@@ -245,11 +255,12 @@ int main(int argc, char *argv[])
 
                     if(!aggiungi_in_queue(ordini_consegnati, ord))
                     {
-                        op = 0;
+                        // op = 0;
                         break;
                     }
 
                     rimuovi_testa_PQ(ordini_in_elaborazione);
+                    op = 1;
                 }
                 break;
         }
