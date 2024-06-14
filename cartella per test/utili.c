@@ -60,7 +60,3 @@ void attesa()
 }
 
 
-void leggi_file_input(FILE *fp_input, queue ordini)
-{
-    int *ordini;
-}
