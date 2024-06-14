@@ -230,6 +230,7 @@ int ottieni_tempo_di_preparazione(ordine ord)
     return ord->t_preparazione;
 }
 
+
 ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *input, int ID)
 {
     ordine ord;
@@ -259,6 +260,7 @@ ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *inpu
     return ord;
 
 }
+
 
 int *leggi_piatti_da_file(FILE *menu, FILE *input)
 {
@@ -300,34 +302,6 @@ int *leggi_piatti_da_file(FILE *menu, FILE *input)
     return piatti;
 }
 
-char *leggi_descrizione_da_file(FILE *input)
-{
-    char *descrizione;
-    char temporaneo[500];
-
-    if(fgets(temporaneo, 500, input) == NULL)
-        return NULL;
-
-    // Rimuove il carattere '\n' dalla stringa
-    temporaneo[strcspn(temporaneo, "\n")] = '\0';
-
-    if(temporaneo[0] == '\0')
-        return NULL;
-
-    descrizione = malloc(strlen(temporaneo) + 1);
-    if(descrizione == NULL)
-    {
-        printf("Allocazione dinamica non andata a buon fine.\n");
-        exit(1);
-    }
-
-    strcpy(descrizione, temporaneo);
-
-    fgets(temporaneo, 500, input);
-
-    return descrizione;
-}
-
 
 void stampa_ordine_file(FILE *menu, FILE *output, ordine ord)
 {
@@ -366,3 +340,4 @@ void stampa_nome_piatti_file(FILE *menu, FILE *output, int *piatti)
 
     rewind(menu);
 }
+

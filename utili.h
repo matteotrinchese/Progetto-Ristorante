@@ -49,5 +49,5 @@ char *leggi_descrizione();
 void attesa();
 
 
-
+char *leggi_descrizione_da_file(FILE *input);
 

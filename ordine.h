@@ -123,9 +123,6 @@ ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *inpu
 int *leggi_piatti_da_file(FILE *menu, FILE *input);
 
 
-char *leggi_descrizione_da_file(FILE *input);
-
-
 void stampa_ordine_file(FILE *menu, FILE *output, ordine ord);
 
 
