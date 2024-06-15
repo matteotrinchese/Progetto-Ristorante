@@ -26,3 +26,5 @@ TestC_Input13.txt
 TestC_Operazione13.txt
 TestC_Input14.txt
 TestC_Operazione14.txt
+TestC_Input15.txt
+TestC_Operazione15.txt
