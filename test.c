@@ -6,12 +6,12 @@
 #include "ordine.h"
 #include "PQueue.h"
 
-
+// Dichiarazione della funzione che confronta due file
 int controllo_file(FILE *fp_output, FILE *fp_oracle);
-
 
 int main(int argc, char *argv[])
 {
+    // Controllo che il numero di argomenti sia corretto
     if(argc != 2)
     {
         printf("Inserire il file contenente la test suite.\n");
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     int righe_file = 0;
     int op = 0;
 
-    // Apertura del file che contiene il MENU'
+    // Apertura del file che contiene il MENU
     menu = fopen("MENU.txt", "r");
     if(menu == NULL)
     {
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    // Apertura del file che contiene il tempo di preparazione dei piatti contenuti nel MENU'
+    // Apertura del file che contiene il tempo di preparazione dei piatti contenuti nel MENU
     tempo_di_preparazione = fopen("PREPARAZIONE.txt", "r");
     if(tempo_di_preparazione == NULL)
     {
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-
+    // Apertura del file della test suite
     fp_testsuite = fopen(argv[1], "r");
     if(fp_testsuite == NULL)
     {
@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Apertura del file per i risultati
     fp_risultato = fopen("risultato.txt", "w");
     if(fp_risultato == NULL)
     {
@@ -62,25 +63,31 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Lettura del numero di righe nel file della test suite
     righe_test_suite = leggi_righe_file(fp_testsuite);
 
+    // Loop per ogni coppia di righe nella test suite
     for(int i = 0; i < righe_test_suite / 2; i++)
     {
         op = 0;
+        // Creazione delle strutture dati necessarie
         ordini_in_attesa = crea_queue();
         ordini_in_elaborazione = crea_PQ();
         ordini_consegnati = crea_queue();
 
+        // Lettura del nome del file di input
         fgets(input, 50, fp_testsuite);
         input[strcspn(input, "\n")] = '\0';
 
-
+        // Lettura del nome del file delle operazioni
         fgets(operazione, 50, fp_testsuite);
         operazione[strcspn(operazione, "\n")] = '\0';
 
+        // Generazione dei nomi per i file di output e oracle
         sprintf(output, "TestC_Output%d.txt", i + 1);
         sprintf(oracle, "TestC_Oracle%d.txt", i + 1);
 
+        // Apertura dei file di input, operazione, output e oracle
         fp_input = fopen(input, "r");
         if(fp_input == NULL)
         {
@@ -109,9 +116,10 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-
+        // Lettura della scelta dal file delle operazioni
         fscanf(fp_operazione, "%d\n", &scelta);
 
+        // Esecuzione dell'operazione scelta
         switch(scelta)
         {
             default:
@@ -120,18 +128,17 @@ int main(int argc, char *argv[])
             case 1:
                 conto_ordini = 1;
                 op = 0;
+                // Lettura degli ordini dal file di input e aggiunta alla coda
                 while(!feof(fp_input))
                 {
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        // op = 0;
                         break;
                     }
 
                     if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     {
-                        // op = 0;
                         break;
                     }
                     op = 1;
@@ -141,13 +148,12 @@ int main(int argc, char *argv[])
             case 2:
                 conto_ordini = 1;
                 int i = 0;
+                // Lettura degli ordini dal file di input e aggiunta alla coda
                 while(!feof(fp_input))
                 {
-
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -161,6 +167,7 @@ int main(int argc, char *argv[])
                 }
 
                 op = 0;
+                // Lettura del numero di ordini da spostare nella priority queue
                 fscanf(fp_operazione, "%d\n", &num);
 
                 for(int j = 0; j < num; j++)
@@ -188,18 +195,17 @@ int main(int argc, char *argv[])
                 break;
             case 3:
                 conto_ordini = 1;
+                // Lettura degli ordini dal file di input e aggiunta alla coda
                 while(!feof(fp_input))
                 {
                     ord = leggi_ordine_da_file(menu, tempo_di_preparazione, fp_input, conto_ordini);
                     if(ord == NULL)
                     {
-                        // op = 0;
                         break;
                     }
 
                     if(!aggiungi_in_queue(ordini_in_attesa, ord))
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -207,18 +213,17 @@ int main(int argc, char *argv[])
                     conto_ordini++;
                 }
                 op = 0;
+                // Lettura del numero di ordini da spostare nella priority queue
                 fscanf(fp_operazione, "%d", &num);
                 for(int j = 0; j < num; j++)
                 {
                     if(queue_vuota(ordini_in_attesa))
                     {
-                        // op = 0;
                         break;
                     }
 
                     if(PQ_piena(ordini_in_elaborazione))
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -226,7 +231,6 @@ int main(int argc, char *argv[])
 
                     if(!aggiungi_in_PQ(ordini_in_elaborazione, ord))
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -234,12 +238,12 @@ int main(int argc, char *argv[])
                     op = 1;
                 }
                 op = 0;
+                // Lettura del numero di ordini da spostare nella coda consegnati
                 fscanf(fp_operazione, "%d", &num);
                 for(int j = 0; j < num; j++)
                 {
                     if(PQ_vuota(ordini_in_elaborazione))
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -247,7 +251,6 @@ int main(int argc, char *argv[])
 
                     if(!aggiungi_in_queue(ordini_consegnati, ord))
                     {
-                        // op = 0;
                         break;
                     }
 
@@ -257,6 +260,7 @@ int main(int argc, char *argv[])
                 break;
         }
 
+        // Scrittura dei risultati nel file di output
         if(op == 0)
         {
             fprintf(fp_output, "Nessuna operazione effettuata.");
@@ -280,30 +284,35 @@ int main(int argc, char *argv[])
                 stampa_queue_file(menu, fp_output, ordini_consegnati);
         }
 
+        // Rewind del file di output per la lettura
         rewind(fp_output);
 
+        // Confronto tra file di output e oracle
         if(controllo_file(fp_output, fp_oracle))
             fprintf(fp_risultato, "Successo.\n");
         else
             fprintf(fp_risultato, "Fallimento.\n");
 
+        // Deallocazione delle strutture dati
         dealloca_queue(ordini_in_attesa);
         dealloca_PQ(ordini_in_elaborazione);
         dealloca_queue(ordini_consegnati);
 
+        // Chiusura dei file
         fclose(fp_input);
         fclose(fp_output);
         fclose(fp_operazione);
         fclose(fp_oracle);
     }
 
+    // Chiusura dei file rimanenti
     fclose(fp_testsuite);
     fclose(menu);
     fclose(tempo_di_preparazione);
     return 0;
 }
 
-
+// Funzione che confronta il contenuto di due file carattere per carattere
 int controllo_file(FILE *fp_output, FILE *fp_oracle)
 {
     char ch1, ch2;

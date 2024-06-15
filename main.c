@@ -6,6 +6,7 @@
 #include "utili.h"
 
 void stampa_menu(FILE *);
+void pulisci_schermo();
 
 int main()
 {
@@ -49,7 +50,7 @@ int main()
     while(1)
     {
         // Pulisce il terminale
-        system("clear");
+        pulisci_schermo();
 
         // Stampa delle operazioni disponibili nel programma
         printf("+-------------------------------------+\n");
@@ -263,4 +264,14 @@ void stampa_menu(FILE *menu)
 
     // Rimanda il puntatore all'inizio del file
     rewind(menu);
+}
+
+
+void pulisci_schermo()
+{
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }

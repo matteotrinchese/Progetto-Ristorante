@@ -113,11 +113,22 @@ void dealloca_ordine(ordine ord);
  * - Funzione: ottieni_tempo_di_preparazione(ord) -> int
  * - Descrizione: Restituisce il tempo di preparaizione.
  * - Pre-condizioni: ord deve puntare ad un ordine valido.
- * - Post-condizioni: la funzione restituisce il tempo di preparazione dell'ordine passato.
+ * - Post-condizioni: la funzione restituisce il tempo di preparazione dell'ordine passato alla funzione.
  */
 int ottieni_tempo_di_preparazione(ordine ord);
 
 
+/*
+ * Specifica sintattica:
+ * - ottieni_ID(ordine) -> int
+ * - tipi: ordine
+ *
+ * Specifica semantica:
+ * - Funzione: ottieni_ID(ord) -> int
+ * - Descrizione: Restituisce l'ID dell'ordine.
+ * - Pre-condizioni: ord deve puntare ad un ordine valido.
+ * - Post-condizioni: la funzione restituisce l'ID dell'ordine passato alla funzione.
+ */
 int ottieni_ID(ordine ord);
 
 /*

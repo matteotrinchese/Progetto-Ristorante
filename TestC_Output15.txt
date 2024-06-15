@@ -1,0 +1,49 @@
+Ordini in attesa:
+Nessuno.
+
+Ordine in cucina:
+
+ID: 002
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+vorrei il pane morbido
+Tempo stimato di preparazione: 11 min.
+
+ID: 003
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+vorrei il pane morbido
+Tempo stimato di preparazione: 11 min.
+
+ID: 005
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+vorrei il pane morbido
+Tempo stimato di preparazione: 11 min.
+
+ID: 006
+Piatti:
+Bruschetta al pomodoro
+Descrizione:
+vorrei il pane morbido
+Tempo stimato di preparazione: 11 min.
+
+ID: 001
+Piatti:
+Bistecca alla fiorentina
+Descrizione:
+la preferirei piu' cotta
+Tempo stimato di preparazione: 26 min.
+
+ID: 004
+Piatti:
+Branzino al forno
+Descrizione:
+lo vorrei piu' cotta
+Tempo stimato di preparazione: 31 min.
+
+Ordini consegnati:
+Nessuno.

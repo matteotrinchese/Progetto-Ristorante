@@ -2,10 +2,17 @@ Ordini in attesa:
 
 ID: 021
 Piatti:
-Bruschetta al pomodoro
+Branzino al forno
 Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
+aggiungere patate al forno.
+Tempo stimato di preparazione: 31 min.
+
+ID: 022
+Piatti:
+Tiramisu'
+Descrizione:
+usa meno caffe'.
+Tempo stimato di preparazione: 16 min.
 
 Ordine in cucina:
 
@@ -13,141 +20,141 @@ ID: 001
 Piatti:
 Bruschetta al pomodoro
 Descrizione:
-wdvudwvuevu
+aggiungere un po' di basilico fresco in piu'.
 Tempo stimato di preparazione: 11 min.
 
-ID: 020
+ID: 002
 Piatti:
-Bruschetta al pomodoro
+Insalata Caprese
 Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 019
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 018
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 017
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 016
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 015
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 014
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
+sostituire la mozzarella di bufula con la burrata.
 Tempo stimato di preparazione: 11 min.
 
 ID: 013
 Piatti:
 Bruschetta al pomodoro
 Descrizione:
-wdvudwvuevu
+aggiungere un po' di basilico fresco in piu'.
 Tempo stimato di preparazione: 11 min.
 
-ID: 012
+ID: 014
 Piatti:
-Bruschetta al pomodoro
+Insalata Caprese
 Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 011
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 010
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 009
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 008
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 007
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 006
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 005
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
-
-ID: 004
-Piatti:
-Bruschetta al pomodoro
-Descrizione:
-wdvudwvuevu
+sostituire la mozzarella di bufula con la burrata.
 Tempo stimato di preparazione: 11 min.
 
 ID: 003
 Piatti:
-Bruschetta al pomodoro
+Carpaccio di manzo
 Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
+con scaglie di parmiggiano extra.
+Tempo stimato di preparazione: 16 min.
 
-ID: 002
+ID: 010
 Piatti:
-Bruschetta al pomodoro
+Tiramisu'
 Descrizione:
-wdvudwvuevu
-Tempo stimato di preparazione: 11 min.
+usa meno caffe'.
+Tempo stimato di preparazione: 16 min.
+
+ID: 015
+Piatti:
+Carpaccio di manzo
+Descrizione:
+con scaglie di parmiggiano extra.
+Tempo stimato di preparazione: 16 min.
+
+ID: 004
+Piatti:
+Spaghetti alla carbonara
+Descrizione:
+senza guanciale.
+Tempo stimato di preparazione: 21 min.
+
+ID: 011
+Piatti:
+Panna cotta con salsa ai frutti di bosco
+Descrizione:
+salsa ai frutti di bosco extra.
+Tempo stimato di preparazione: 21 min.
+
+ID: 016
+Piatti:
+Spaghetti alla carbonara
+Descrizione:
+senza guanciale.
+Tempo stimato di preparazione: 21 min.
+
+ID: 007
+Piatti:
+Bistecca alla fiorentina
+Descrizione:
+ben cotta.
+Tempo stimato di preparazione: 26 min.
+
+ID: 012
+Piatti:
+Torta al cioccolato fondente
+Descrizione:
+aggiungere una pallina di gelato vaniglia.
+Tempo stimato di preparazione: 26 min.
+
+ID: 019
+Piatti:
+Bistecca alla fiorentina
+Descrizione:
+ben cotta.
+Tempo stimato di preparazione: 26 min.
+
+ID: 005
+Piatti:
+Risotto ai funghi porcini
+Descrizione:
+aggiungere più tartufo.
+Tempo stimato di preparazione: 31 min.
+
+ID: 009
+Piatti:
+Branzino al forno
+Descrizione:
+aggiungere patate al forno.
+Tempo stimato di preparazione: 31 min.
+
+ID: 017
+Piatti:
+Risotto ai funghi porcini
+Descrizione:
+aggiungere più tartufo.
+Tempo stimato di preparazione: 31 min.
+
+ID: 008
+Piatti:
+Pollo alla cacciatora
+Descrizione:
+contorno extra di verdure.
+Tempo stimato di preparazione: 36 min.
+
+ID: 020
+Piatti:
+Pollo alla cacciatora
+Descrizione:
+contorno extra di verdure.
+Tempo stimato di preparazione: 36 min.
+
+ID: 006
+Piatti:
+Lasagna alla bolognese
+Descrizione:
+aggiungere più besciamella.
+Tempo stimato di preparazione: 41 min.
+
+ID: 018
+Piatti:
+Lasagna alla bolognese
+Descrizione:
+aggiungere più besciamella.
+Tempo stimato di preparazione: 41 min.
 
 Ordini consegnati:
 Nessuno.

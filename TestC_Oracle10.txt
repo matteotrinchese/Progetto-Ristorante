@@ -7,7 +7,7 @@ ID: 002
 Piatti:
 Bruschetta al pomodoro
 Descrizione:
-provaprova
+bbbbbbbbbbbbbbbbbb
 Tempo stimato di preparazione: 11 min.
 
 ID: 003
@@ -15,7 +15,7 @@ Piatti:
 Insalata Caprese
 Carpaccio di manzo
 Descrizione:
-prova
+kkkkkkkkkkkkkk
 Tempo stimato di preparazione: 17 min.
 
 ID: 001
@@ -24,7 +24,7 @@ Lasagna alla bolognese
 Bistecca alla fiorentina
 Tiramisu'
 Descrizione:
-provaprovaprova
+aaaaaaaaaaaaaaaaaaaaa
 Tempo stimato di preparazione: 43 min.
 
 Ordini consegnati:
