@@ -5,14 +5,15 @@ Piatti:
 Carpaccio di manzo
 Spaghetti alla carbonara
 Risotto ai funghi porcini
+Descrizione:
+
 Tempo stimato di preparazione: 33 min.
 
 ID: 002
 Piatti:
-Bistecca alla fiorentina
 Spaghetti alla carbonara
 Carpaccio di manzo
-Tempo stimato di preparazione: 28 min.
+Tempo stimato di preparazione: 22 min.
 
 Ordine in cucina:
 Nessuno.

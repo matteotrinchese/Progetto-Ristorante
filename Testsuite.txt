@@ -22,3 +22,7 @@ TestC_Input11.txt
 TestC_Operazione11.txt
 TestC_Input12.txt
 TestC_Operazione12.txt
+TestC_Input13.txt
+TestC_Operazione13.txt
+TestC_Input14.txt
+TestC_Operazione14.txt
