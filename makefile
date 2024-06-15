@@ -1,8 +1,8 @@
-test.exe: ordine.o queue.o PQueue.o utili.o test.o
-	gcc ordine.o queue.o PQueue.o utili.o test.o -o test.exe
+test: ordine.o queue.o PQueue.o utili.o test.o
+	gcc ordine.o queue.o PQueue.o utili.o test.o -o test
 
-main.exe: ordine.o queue.o PQueue.o utili.o main.o
-	gcc ordine.o queue.o PQueue.o utili.o main.o -o main.exe
+main: ordine.o queue.o PQueue.o utili.o main.o
+	gcc ordine.o queue.o PQueue.o utili.o main.o -o main
 
 ordine.o: ordine.c 
 	gcc -c ordine.c
