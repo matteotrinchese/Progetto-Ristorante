@@ -26,10 +26,10 @@ int main(int argc, char *argv[])
     char input[50], operazione[50], output[50], oracle[50];
     ordine ord;
     int scelta;
-    int num;
-    int righe_test_suite;
-    int righe_file;
-    int op = 1;
+    int num = 0;
+    int righe_test_suite = 0;
+    int righe_file = 0;
+    int op = 0;
 
     // Apertura del file che contiene il MENU'
     menu = fopen("MENU.txt", "r");
@@ -63,12 +63,10 @@ int main(int argc, char *argv[])
     }
 
     righe_test_suite = leggi_righe_file(fp_testsuite);
-    printf("%d\n", righe_test_suite);
 
     for(int i = 0; i < righe_test_suite / 2; i++)
     {
         op = 0;
-        printf("%d\n", i);
         ordini_in_attesa = crea_queue();
         ordini_in_elaborazione = crea_PQ();
         ordini_consegnati = crea_queue();
@@ -82,9 +80,6 @@ int main(int argc, char *argv[])
 
         sprintf(output, "TestC_Output%d.txt", i + 1);
         sprintf(oracle, "TestC_Oracle%d.txt", i + 1);
-
-        puts(input);
-        puts(output);
 
         fp_input = fopen(input, "r");
         if(fp_input == NULL)
@@ -140,7 +135,6 @@ int main(int argc, char *argv[])
                         break;
                     }
                     op = 1;
-                    printf("OP: %d\n", op);
                     conto_ordini++;
                 }
                 break;
@@ -162,14 +156,13 @@ int main(int argc, char *argv[])
                         break;
                     }
 
-                    printf("I e' %d\n", i++);
                     op = 1;
                     conto_ordini++;
                 }
 
                 op = 0;
                 fscanf(fp_operazione, "%d\n", &num);
-                printf("%d", num);
+
                 for(int j = 0; j < num; j++)
                 {
                     if(queue_vuota(ordini_in_attesa))
@@ -190,7 +183,6 @@ int main(int argc, char *argv[])
                     }
 
                     rimuovi_testa_queue(ordini_in_attesa);
-                    printf("J e' %d\n", j);
                     op = 1;
                 }
                 break;
@@ -265,7 +257,6 @@ int main(int argc, char *argv[])
                 break;
         }
 
-        printf("OP prima di fare le cose: %d\n", op);
         if(op == 0)
         {
             fprintf(fp_output, "Nessuna operazione effettuata.");
@@ -296,8 +287,6 @@ int main(int argc, char *argv[])
         else
             fprintf(fp_risultato, "Fallimento.\n");
 
-        printf("%d\n", i);
-
         dealloca_queue(ordini_in_attesa);
         dealloca_PQ(ordini_in_elaborazione);
         dealloca_queue(ordini_consegnati);
@@ -306,8 +295,6 @@ int main(int argc, char *argv[])
         fclose(fp_output);
         fclose(fp_operazione);
         fclose(fp_oracle);
-
-        printf("%d\n", i);
     }
 
     fclose(fp_testsuite);
