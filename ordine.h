@@ -118,6 +118,8 @@ void dealloca_ordine(ordine ord);
 int ottieni_tempo_di_preparazione(ordine ord);
 
 
+int ottieni_ID(ordine ord);
+
 /*
  * Specifica sintattica:
  * - leggi_ordine_da_file(FILE *, FILE *, FILE *, int) -> ordine

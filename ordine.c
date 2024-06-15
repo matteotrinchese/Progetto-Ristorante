@@ -232,6 +232,12 @@ int ottieni_tempo_di_preparazione(ordine ord)
     return ord->t_preparazione;
 }
 
+int ottieni_ID(ordine ord)
+{
+    // Restituisce l'ID dell'ordine
+    return ord->ID;
+}
+
 
 ordine leggi_ordine_da_file(FILE * menu, FILE *tempo_di_preparazione, FILE *input, int ID)
 {

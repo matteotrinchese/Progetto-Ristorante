@@ -95,12 +95,38 @@ void scorri_PQ_verso_il_basso(PQueue q)
         int maggiore_priorita = i;
 
         // Confronta l'elemento corrente con il figlio sinistro
-        if (sinistro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[sinistro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
-            maggiore_priorita = sinistro;
+        if (sinistro <= q->num_el)
+        {
+            if(ottieni_tempo_di_preparazione(q->ord[sinistro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
+            {
+                maggiore_priorita = sinistro;
+            }    
+            else if(ottieni_tempo_di_preparazione(q->ord[sinistro]) == ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
+            {
+                if(ottieni_ID(q->ord[sinistro]) < ottieni_ID(q->ord[maggiore_priorita]))
+                {
+                    maggiore_priorita = sinistro;
+                }
+            }
+        }
+            
+
 
         // Confronta l'elemento corrente con il figlio destro
-        if (destro <= q->num_el && ottieni_tempo_di_preparazione(q->ord[destro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
-            maggiore_priorita = destro;
+        if (destro <= q->num_el)
+        {
+            if(ottieni_tempo_di_preparazione(q->ord[destro]) < ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
+            {
+                maggiore_priorita = destro;
+            }
+            else if(ottieni_tempo_di_preparazione(q->ord[destro]) == ottieni_tempo_di_preparazione(q->ord[maggiore_priorita]))
+            {
+                if(ottieni_ID(q->ord[destro]) < ottieni_ID(q->ord[maggiore_priorita]))
+                {
+                    maggiore_priorita = destro;
+                }
+            }
+        }
 
         // Se l'elemento corrente ha la priorità minore (tempo di preparazione maggiore) di entrambi i figli, scambiamo
         if (maggiore_priorita != i)
@@ -207,6 +233,12 @@ void stampa_PQ(FILE *menu, PQueue q)
         stampa_ordine(menu, ord);
         rimuovi_testa_PQ(q);
     }
+
+    // for(int i=0; i<num_el_originale; i++)
+    // {
+    //     printf("bomboclat\n");
+    //     stampa_ordine(menu, temporaneo[i]);
+    // }
 
     for(int j = 0; j < num_el_originale; j++)
     {
