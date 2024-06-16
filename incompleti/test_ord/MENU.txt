@@ -1,5 +1,0 @@
-1	Pizza
-2	Carbonara
-3	Patatine
-4   Pollo
-5   PANINO

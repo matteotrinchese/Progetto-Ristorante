@@ -1,10 +1,7 @@
 
+
 test: ordine.o queue.o PQueue.o utili.o test.o
 	gcc ordine.o queue.o PQueue.o utili.o test.o -o test
-
-
-main: ordine.o queue.o PQueue.o utili.o main.o
-	gcc ordine.o queue.o PQueue.o utili.o main.o -o main
 
 
 ordine.o: ordine.c
@@ -25,10 +22,6 @@ utili.o: utili.c
 
 test.o: queue.h PQueue.h utili.h test.c
 	gcc -c test.c
-
-
-main.o: queue.h PQueue.h utili.h main.c
-	gcc -c main.c
 
 
 clean:

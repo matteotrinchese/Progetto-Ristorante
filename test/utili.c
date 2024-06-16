@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "ordine.h"
-#include "queue.h"
-#include "PQueue.h"
 #include "utili.h"
 
 
@@ -60,7 +57,36 @@ void attesa()
 }
 
 
-<<<<<<< HEAD
+char *leggi_descrizione_da_file(FILE *input)
+{
+    char *descrizione;
+    char temporaneo[500];
 
-=======
->>>>>>> 3b67b79f1164f5773a2f1a12d5beb87345d67a24
+    // Legge una linea di testo dal file
+    if(fgets(temporaneo, 500, input) == NULL)
+        return NULL;  // Se il file è vuoto o terminato, restituisce NULL
+
+    // Rimuove il carattere '\n' finale se presente
+    temporaneo[strcspn(temporaneo, "\n")] = '\0';
+
+    // Se la linea letta è vuota, restituisce NULL
+    if(temporaneo[0] == '\0')
+        return NULL;
+
+    // Alloca memoria per la descrizione
+    descrizione = malloc(strlen(temporaneo) + 1);
+    if(descrizione == NULL)
+    {
+        printf("Allocazione dinamica non andata a buon fine.\n");
+        exit(1);  // Esce dal programma se malloc fallisce
+    }
+
+    // Copia la descrizione temporanea nella memoria allocata
+    strcpy(descrizione, temporaneo);
+
+    // Legge la prossima linea (se presente) per evitare sovrascritture
+    fgets(temporaneo, 500, input);
+
+    return descrizione;
+}
+
